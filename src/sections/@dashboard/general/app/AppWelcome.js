@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import { Typography, Button, Card, CardContent } from '@mui/material';
 import { SeoIllustration } from '../../../../assets';
-import {PATH_DASHBOARD, PATH_DOCS, PATH_PAGE} from "../../../../routes/paths";
+import { PATH_DASHBOARD, PATH_DOCS, PATH_PAGE } from '../../../../routes/paths';
+import NextLink from 'next/link';
+import Iconify from '../../../../components/Iconify';
 
 // ----------------------------------------------------------------------
 
@@ -38,14 +40,18 @@ export default function AppWelcome({ displayName }) {
       >
         <Typography gutterBottom variant="h4">
           Welcome back,
-          <br /> {!displayName ? '...' : displayName}!
+          <br /> {!displayName ? 'Your name' : displayName}!
         </Typography>
 
         <Typography variant="body1" sx={{ pb: { xs: 3, xl: 5 }, maxWidth: 480, mx: 'auto' }}>
-            Hope you are doing well <br/> Click below to see what's happening
+          Hope you are doing well <br /> Click below to create a new post
         </Typography>
 
-        <Button href={PATH_DASHBOARD.blog.root} variant="contained">Go Now</Button>
+        <NextLink href={PATH_DASHBOARD.blog.newPost} passHref>
+          <Button variant="contained" startIcon={<Iconify icon={'eva:plus-fill'} />}>
+            New Post
+          </Button>
+        </NextLink>
       </CardContent>
 
       <SeoIllustration

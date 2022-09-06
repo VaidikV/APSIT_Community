@@ -3,7 +3,7 @@ import { capitalCase } from 'change-case';
 import NextLink from 'next/link';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Box, Card, Stack, Link,  Tooltip, Container, Typography } from '@mui/material';
+import { Box, Card, Stack, Link, Tooltip, Container, Typography } from '@mui/material';
 // routes
 import { PATH_AUTH } from '../../routes/paths';
 // hooks
@@ -91,10 +91,7 @@ export default function Login() {
               <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
                 Hi, Welcome Back
               </Typography>
-              <Image
-                src="https://minimals.cc/assets/illustrations/illustration_login.png"
-                alt="login"
-              />
+              <Image src="https://minimals.cc/assets/illustrations/illustration_login.png" alt="login" />
             </SectionStyle>
           )}
 
@@ -107,17 +104,6 @@ export default function Login() {
                   </Typography>
                   <Typography sx={{ color: 'text.secondary' }}>Enter your details below.</Typography>
                 </Box>
-
-                <Tooltip title={capitalCase(method)} placement="right">
-                  <>
-                    <Image
-                      disabledEffect
-                      alt={method}
-                      src={`https://minimal-assets-api.vercel.app/assets/icons/auth/ic_${method}.png`}
-                      sx={{ width: 32, height: 32 }}
-                    />
-                  </>
-                </Tooltip>
               </Stack>
 
               {/*// To Show the message

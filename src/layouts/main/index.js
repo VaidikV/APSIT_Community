@@ -44,7 +44,7 @@ export default function MainLayout({ children }) {
 
             <Typography variant="caption" component="p">
               © All rights reserved
-              <br /> Made by &nbsp;Apsit students for the Apsit studnets.
+              <br /> Made by &nbsp;Apsit students for the Apsit students.
             </Typography>
           </Container>
         </Box>
