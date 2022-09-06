@@ -43,7 +43,7 @@ ComingSoon.getLayout = function getLayout(page) {
 // ----------------------------------------------------------------------
 
 export default function ComingSoon() {
-  const countdown = useCountdown(new Date('07/07/2022 21:30'));
+  const countdown = useCountdown(new Date('07/10/2022 00:00)'));
 
   return (
     <Page title="Coming Soon" sx={{ height: 1 }}>

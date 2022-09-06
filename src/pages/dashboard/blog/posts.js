@@ -26,7 +26,8 @@ import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from '../../../sections/
 const SORT_OPTIONS = [
   { value: 'latest', label: 'Latest' },
   { value: 'popular', label: 'Popular' },
-  { value: 'oldest', label: 'Oldest' },
+  { value: 'trending', label: 'Trending' },
+  { value: 'bookmarked', label: 'Bookmarked' },
 ];
 
 // ----------------------------------------------------------------------
@@ -86,22 +87,6 @@ export default function BlogPosts() {
   return (
     <Page title="Blog: Posts">
       <Container maxWidth={themeStretch ? false : 'lg'}>
-        <HeaderBreadcrumbs
-          heading="Blog"
-          links={[
-            { name: 'Dashboard', href: PATH_DASHBOARD.root },
-            { name: 'Blog', href: PATH_DASHBOARD.blog.root },
-            { name: 'Posts' },
-          ]}
-          action={
-            <NextLink href={PATH_DASHBOARD.blog.newPost} passHref>
-              <Button variant="contained" startIcon={<Iconify icon={'eva:plus-fill'} />}>
-                New Post
-              </Button>
-            </NextLink>
-          }
-        />
-
         <Stack mb={5} direction="row" alignItems="center" justifyContent="space-between">
           <BlogPostsSearch />
           <BlogPostsSort query={filters} options={SORT_OPTIONS} onSort={handleChangeSort} />

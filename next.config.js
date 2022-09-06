@@ -13,6 +13,5 @@ module.exports = withTM({
   trailingSlash: true,
   env: {
     HOST_API_KEY: 'https://apsit-community-backend-v2.herokuapp.com',
-
   },
 });

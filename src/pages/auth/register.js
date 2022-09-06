@@ -90,10 +90,7 @@ export default function Register() {
               <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
                 We are very excited to have you
               </Typography>
-              <Image
-                alt="register"
-                src="https://minimals.cc/assets/illustrations/illustration_register.png"
-              />
+              <Image alt="register" src="https://minimals.cc/assets/illustrations/illustration_register.png" />
             </SectionStyle>
           )}
 
@@ -104,18 +101,7 @@ export default function Register() {
                   <Typography variant="h4" gutterBottom>
                     Register
                   </Typography>
-
                 </Box>
-                <Tooltip title={capitalCase(method)}>
-                  <>
-                    <Image
-                      disabledEffect
-                      alt={method}
-                      src={`https://minimal-assets-api.vercel.app/assets/icons/auth/ic_${method}.png`}
-                      sx={{ width: 32, height: 32 }}
-                    />
-                  </>
-                </Tooltip>
               </Box>
 
               <RegisterForm />

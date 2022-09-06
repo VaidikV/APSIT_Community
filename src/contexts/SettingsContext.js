@@ -123,20 +123,6 @@ function useSettingCookies(defaultSettings) {
 
   const onChangeSetting = () => {
     Cookies.set(cookiesKey.themeMode, settings.themeMode, { expires: cookiesExpires });
-
-    Cookies.set(cookiesKey.themeDirection, settings.themeDirection, { expires: cookiesExpires });
-
-    Cookies.set(cookiesKey.themeColorPresets, settings.themeColorPresets, {
-      expires: cookiesExpires,
-    });
-
-    Cookies.set(cookiesKey.themeLayout, settings.themeLayout, {
-      expires: cookiesExpires,
-    });
-
-    Cookies.set(cookiesKey.themeStretch, JSON.stringify(settings.themeStretch), {
-      expires: cookiesExpires,
-    });
   };
 
   useEffect(() => {
