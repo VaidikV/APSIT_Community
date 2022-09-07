@@ -16,6 +16,8 @@ import { PATH_DASHBOARD } from '../../../routes/paths';
 import { RHFSwitch, RHFEditor, FormProvider, RHFTextField, RHFUploadSingleFile } from '../../../components/hook-form';
 //
 import BlogNewPostPreview from './BlogNewPostPreview';
+import axios from '../../../utils/axios';
+import { setSession } from '../../../utils/jwt';
 
 // ----------------------------------------------------------------------
 
@@ -61,7 +63,7 @@ export default function BlogNewPostForm() {
   const NewBlogSchema = Yup.object().shape({
     title: Yup.string().required('Title is required'),
     description: Yup.string().required('Description is required'),
-    content: Yup.string().min(1000).required('Content is required'),
+    content: Yup.string().min(20).required('Content is required'),
     cover: Yup.mixed().required('Cover is required'),
   });
 
@@ -94,15 +96,16 @@ export default function BlogNewPostForm() {
 
   const values = watch();
 
-  const onSubmit = async () => {
+  const onSubmit = async (postData) => {
+    console.log(postData);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      const response = await axios.post('/create-post', postData);
       reset();
       handleClosePreview();
-      enqueueSnackbar('Post success!');
+      enqueueSnackbar(response.data.message);
       push(PATH_DASHBOARD.blog.posts);
     } catch (error) {
-      console.error(error);
+      enqueueSnackbar(error.message, { variant: 'error' });
     }
   };
 
@@ -121,7 +124,6 @@ export default function BlogNewPostForm() {
     },
     [setValue]
   );
-
 
   return (
     <>
