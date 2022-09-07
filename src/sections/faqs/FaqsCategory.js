@@ -10,33 +10,23 @@ import { MotionViewport, varFade } from '../../components/animate';
 
 const CATEGORIES = [
   {
-    label: 'Managing your account',
+    label: 'FE COMP',
     icon: 'https://minimal-assets-api.vercel.app/assets/icons/faqs/ic_account.svg',
     href: '#',
   },
   {
-    label: 'Payment',
+    label: 'SE COMP',
     icon: 'https://minimal-assets-api.vercel.app/assets/icons/faqs/ic_payment.svg',
     href: '#',
   },
   {
-    label: 'Delivery',
+    label: 'TE COMP',
     icon: 'https://minimal-assets-api.vercel.app/assets/icons/faqs/ic_delivery.svg',
     href: '#',
   },
   {
-    label: 'Problem with the Product',
+    label: 'BE COMP',
     icon: 'https://minimal-assets-api.vercel.app/assets/icons/faqs/ic_package.svg',
-    href: '#',
-  },
-  {
-    label: 'Return & Refund',
-    icon: 'https://minimal-assets-api.vercel.app/assets/icons/faqs/ic_refund.svg',
-    href: '#',
-  },
-  {
-    label: 'Guarantees and assurances',
-    icon: 'https://minimal-assets-api.vercel.app/assets/icons/faqs/ic_assurances.svg',
     href: '#',
   },
 ];

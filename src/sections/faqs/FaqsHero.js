@@ -46,28 +46,6 @@ export default function FaqsHero() {
               <TextAnimate text="you?" />
             </Box>
           </div>
-
-          <m.div variants={varFade().inUp}>
-            <InputStyle
-              stretchStart={280}
-              placeholder="Search support"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <Iconify
-                      icon={'eva:search-fill'}
-                      sx={{ color: 'text.disabled', width: 20, height: 20 }}
-                    />
-                  </InputAdornment>
-                ),
-              }}
-              sx={{
-                '& .MuiOutlinedInput-root': {
-                  color: 'common.white',
-                },
-              }}
-            />
-          </m.div>
         </ContentStyle>
       </Container>
     </RootStyle>

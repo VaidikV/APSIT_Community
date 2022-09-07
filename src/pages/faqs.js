@@ -32,16 +32,20 @@ export default function Faqs() {
         <FaqsHero />
 
         <Container sx={{ mt: 15, mb: 10 }}>
+          <Typography variant="h3" sx={{ mb: 5 }}>
+            Contact details
+          </Typography>
+
           <FaqsCategory />
 
           <Typography variant="h3" sx={{ mb: 5 }}>
-            Frequently asked questions
+            Found any bugs?
           </Typography>
 
           <Grid container spacing={10}>
-            <Grid item xs={12} md={6}>
-              <FaqsList />
-            </Grid>
+            {/*<Grid item xs={12} md={6}>*/}
+            {/*  <FaqsList />*/}
+            {/*</Grid>*/}
             <Grid item xs={12} md={6}>
               <FaqsForm />
             </Grid>
