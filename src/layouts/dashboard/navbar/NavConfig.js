@@ -31,7 +31,7 @@ const navConfig = [
   // GENERAL
   // ----------------------------------------------------------------------
   {
-    subheader: 'Home',
+    subheader: '',
     items: [
       {
         title: 'Home',
@@ -40,7 +40,7 @@ const navConfig = [
       },
       {
         title: 'News',
-        path: PATH_PAGE.maintenance,
+        path: PATH_DASHBOARD.general.news,
         icon: ICONS.news,
       },
       {
@@ -48,6 +48,7 @@ const navConfig = [
         path: PATH_PAGE.maintenance,
         icon: ICONS.achievement,
       },
+      { title: 'calendar', path: PATH_DASHBOARD.calendar, icon: ICONS.calendar },
       {
         title: 'About',
         path: PATH_PAGE.about,
@@ -58,92 +59,6 @@ const navConfig = [
         path: PATH_PAGE.faqs,
         icon: ICONS.help,
       },
-
-      // { title: 'e-commerce', path: PATH_DASHBOARD.general.ecommerce, icon: ICONS.ecommerce },
-      // { title: 'analytics', path: PATH_DASHBOARD.general.analytics, icon: ICONS.analytics },
-      // { title: 'banking', path: PATH_DASHBOARD.general.banking, icon: ICONS.banking },
-      // { title: 'booking', path: PATH_DASHBOARD.general.booking, icon: ICONS.booking },
-    ],
-  },
-
-  // MANAGEMENT
-  // ----------------------------------------------------------------------
-  // {
-  //     subheader: 'Post',
-  //     items: [
-  //
-  //         // MANAGEMENT : BLOG
-  //         {
-  //             title: 'Post',
-  //             path: PATH_DASHBOARD.blog.root,
-  //             icon: ICONS.blog,
-  //             children: [
-  //                 {title: 'All posts', path: PATH_DASHBOARD.blog.posts},
-  //                 {title: 'new post', path: PATH_DASHBOARD.blog.newPost},
-  //                 {title: 'Trending Posts', path: PATH_PAGE.maintenance},
-  //                 {title: 'search post', path:  PATH_PAGE.maintenance},
-  //                 {title: 'Bookmarked', path:  PATH_PAGE.maintenance},
-  //
-  //             ],
-  //         },
-  //
-  //         // MANAGEMENT : USER
-  //         // {
-  //         //   title: 'user',
-  //         //   path: PATH_DASHBOARD.user.root,
-  //         //   icon: ICONS.user,
-  //         //   children: [
-  //         //     { title: 'profile', path: PATH_DASHBOARD.user.profile },
-  //         //     { title: 'cards', path: PATH_DASHBOARD.user.cards },
-  //         //     { title: 'list', path: PATH_DASHBOARD.user.list },
-  //         //     { title: 'create', path: PATH_DASHBOARD.user.newUser },
-  //         //     { title: 'edit', path: PATH_DASHBOARD.user.editById },
-  //         //     { title: 'account', path: PATH_DASHBOARD.user.account },
-  //         //   ],
-  //         // },
-  //
-  //         // MANAGEMENT : E-COMMERCE
-  //         // {
-  //         //   title: 'e-commerce',
-  //         //   path: PATH_DASHBOARD.eCommerce.root,
-  //         //   icon: ICONS.cart,
-  //         //   children: [
-  //         //     { title: 'shop', path: PATH_DASHBOARD.eCommerce.shop },
-  //         //     { title: 'product', path: PATH_DASHBOARD.eCommerce.productById },
-  //         //     { title: 'list', path: PATH_DASHBOARD.eCommerce.list },
-  //         //     { title: 'create', path: PATH_DASHBOARD.eCommerce.newProduct },
-  //         //     { title: 'edit', path: PATH_DASHBOARD.eCommerce.editById },
-  //         //     { title: 'checkout', path: PATH_DASHBOARD.eCommerce.checkout },
-  //         //     { title: 'invoice', path: PATH_DASHBOARD.eCommerce.invoice },
-  //         //   ],
-  //         // },
-  //
-  //
-  //     ],
-  // },
-
-  // APP
-  // ----------------------------------------------------------------------
-  {
-    subheader: 'app',
-    items: [
-      {
-        title: 'mail',
-        path: PATH_DASHBOARD.mail.root,
-        icon: ICONS.mail,
-        info: (
-          <Label variant="outlined" color="error">
-            +32
-          </Label>
-        ),
-      },
-      { title: 'chat', path: PATH_DASHBOARD.chat.root, icon: ICONS.chat },
-      { title: 'calendar', path: PATH_DASHBOARD.calendar, icon: ICONS.calendar },
-      // {
-      //   title: 'kanban',
-      //   path: PATH_DASHBOARD.kanban,
-      //   icon: ICONS.kanban,
-      // },
     ],
   },
 ];

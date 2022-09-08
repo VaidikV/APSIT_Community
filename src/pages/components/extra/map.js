@@ -6,7 +6,7 @@ import { Box, Card, Stack, Container, CardHeader, CardContent } from '@mui/mater
 // routes
 import { PATH_PAGE } from '../../../routes/paths';
 // config
-import { MAPBOX_API } from '../../../config';
+
 // _mock_
 import { cities as CITIES } from '../../../_mock/map/cities';
 import { countries as COUNTRIES } from '../../../_mock/map/countries';
@@ -48,7 +48,7 @@ const THEMES = {
 };
 
 const baseSettings = {
-  mapboxApiAccessToken: MAPBOX_API,
+  mapboxApiAccessToken: 'dsfjdsgkjdsfgdlgd',
   width: '100%',
   height: '100%',
   minZoom: 1,

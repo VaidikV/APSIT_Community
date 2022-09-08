@@ -1,38 +1,25 @@
 import orderBy from 'lodash/orderBy';
 import { useEffect, useCallback, useState } from 'react';
-// next
-import NextLink from 'next/link';
+
 // @mui
-import { Grid, Button, Container, Stack } from '@mui/material';
+import { Grid, Container } from '@mui/material';
 // hooks
 import useSettings from '../../../hooks/useSettings';
 import useIsMountedRef from '../../../hooks/useIsMountedRef';
 // utils
 import axios from '../../../utils/axios';
-// routes
-import { PATH_DASHBOARD } from '../../../routes/paths';
+
 // layouts
 import Layout from '../../../layouts';
 // components
 import Page from '../../../components/Page';
-import Iconify from '../../../components/Iconify';
 import { SkeletonPostItem } from '../../../components/skeleton';
-import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
 // sections
-import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from '../../../sections/@dashboard/blog';
+import { NewsPostCard } from '../../../sections/@dashboard/news';
 
 // ----------------------------------------------------------------------
 
-const SORT_OPTIONS = [
-  { value: 'latest', label: 'Latest' },
-  { value: 'popular', label: 'Popular' },
-  { value: 'trending', label: 'Trending' },
-  { value: 'bookmarked', label: 'Bookmarked' },
-];
-
-// ----------------------------------------------------------------------
-
-BlogPosts.getLayout = function getLayout(page) {
+NewsPosts.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>;
 };
 
@@ -51,7 +38,7 @@ const applySort = (posts, sortBy) => {
   return posts;
 };
 
-export default function BlogPosts() {
+export default function NewsPosts() {
   const { themeStretch } = useSettings();
 
   const isMountedRef = useIsMountedRef();
@@ -68,7 +55,7 @@ export default function BlogPosts() {
 
       console.log(response);
       if (isMountedRef.current) {
-        setPosts(response.data.posts);
+        setPosts(response.data.posts.filter((element, idx) => idx < 3));
       }
     } catch (error) {
       console.error(error);
@@ -79,25 +66,14 @@ export default function BlogPosts() {
     getAllPosts();
   }, [getAllPosts]);
 
-  const handleChangeSort = (value) => {
-    if (value) {
-      setFilters(value);
-    }
-  };
-
   return (
     <Page title="Home">
       <Container maxWidth={themeStretch ? false : 'lg'}>
-        <Stack mb={5} direction="row" alignItems="center" justifyContent="space-between">
-          <BlogPostsSearch />
-          <BlogPostsSort query={filters} options={SORT_OPTIONS} onSort={handleChangeSort} />
-        </Stack>
-
         <Grid container spacing={3}>
-          {(!posts.length ? [...Array(12)] : sortedPosts).map((post, index) =>
+          {(!posts.length ? [...Array(3)] : sortedPosts).map((post, index) =>
             post ? (
-              <Grid key={post.id} item xs={12} sm={6} md={(index === 0 && 6) || 3}>
-                <BlogPostCard post={post} index={index} />
+              <Grid key={post.id} item xs={12}>
+                <NewsPostCard post={post} index={index} />
               </Grid>
             ) : (
               <SkeletonPostItem key={index} />

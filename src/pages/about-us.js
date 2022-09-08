@@ -30,11 +30,9 @@ export default function About() {
     <Page title="About us">
       <RootStyle>
         <AboutHero />
-        <AboutWhat />
-        <AboutVision />
+
         <Divider orientation="vertical" sx={{ my: 10, mx: 'auto', width: 2, height: 40 }} />
         <AboutTeam />
-        <AboutTestimonials />
       </RootStyle>
     </Page>
   );

@@ -6,7 +6,7 @@ import { Typography } from '@mui/material';
 // _mock
 import { _mapContact } from '../../_mock';
 // config
-import { MAPBOX_API } from '../../config';
+
 // components
 import Iconify from '../../components/Iconify';
 import { MapControlPopup, MapControlMarker, MapControlScale, MapControlNavigation } from '../../components/map';
@@ -45,7 +45,7 @@ export default function ContactMap() {
         {...viewport}
         onViewportChange={setViewport}
         mapStyle={`mapbox://styles/mapbox/${isLight ? 'light' : 'dark'}-v10`}
-        mapboxApiAccessToken={MAPBOX_API}
+        mapboxApiAccessToken={'ertdgdfsgsfdgr'}
         width="100%"
         height="100%"
       >
