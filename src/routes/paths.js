@@ -32,9 +32,8 @@ export const PATH_DASHBOARD = {
   general: {
     app: path(ROOTS_DASHBOARD, '/home'),
     news: path(ROOTS_DASHBOARD, '/news'),
-    achievement: path(ROOTS_DASHBOARD, '/achievement'),
   },
-
+  achievement: path(ROOTS_DASHBOARD, '/achievement'),
   calendar: path(ROOTS_DASHBOARD, '/calendar'),
   user: {
     root: path(ROOTS_DASHBOARD, '/user'),

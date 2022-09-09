@@ -2,7 +2,7 @@ import orderBy from 'lodash/orderBy';
 import { useEffect, useCallback, useState } from 'react';
 
 // @mui
-import { Grid, Container } from '@mui/material';
+import { Grid, Container, Button } from '@mui/material';
 // hooks
 import useSettings from '../../../hooks/useSettings';
 import useIsMountedRef from '../../../hooks/useIsMountedRef';
@@ -16,6 +16,9 @@ import Page from '../../../components/Page';
 import { SkeletonPostItem } from '../../../components/skeleton';
 // sections
 import { NewsPostCard } from '../../../sections/@dashboard/news';
+import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
+import { PATH_DASHBOARD } from '../../../routes/paths';
+import Iconify from '../../../components/Iconify';
 
 // ----------------------------------------------------------------------
 
@@ -69,6 +72,10 @@ export default function NewsPosts() {
   return (
     <Page title="Home">
       <Container maxWidth={themeStretch ? false : 'lg'}>
+        <HeaderBreadcrumbs
+          heading="News"
+          links={[{ name: 'Dashboard', href: PATH_DASHBOARD.root }, { name: 'All news' }]}
+        />
         <Grid container spacing={3}>
           {(!posts.length ? [...Array(3)] : sortedPosts).map((post, index) =>
             post ? (

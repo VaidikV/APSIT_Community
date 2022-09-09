@@ -44,8 +44,8 @@ const navConfig = [
         icon: ICONS.news,
       },
       {
-        title: 'Achievement',
-        path: PATH_PAGE.maintenance,
+        title: 'Achievements',
+        path: PATH_DASHBOARD.achievement,
         icon: ICONS.achievement,
       },
       { title: 'calendar', path: PATH_DASHBOARD.calendar, icon: ICONS.calendar },
