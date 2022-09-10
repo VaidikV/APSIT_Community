@@ -40,7 +40,7 @@ BlogPostCard.propTypes = {
 export default function BlogPostCard({ post, index }) {
   const isDesktop = useResponsive('up', 'md');
 
-  const { cover, title, view, comment, share, author, createdAt } = post;
+  const { cover, title, _id, view, comment, share, author, createdAt } = post;
 
   const latestPost = index === 0 || index === 1 || index === 2;
 
@@ -48,8 +48,8 @@ export default function BlogPostCard({ post, index }) {
     return (
       <Card>
         <Avatar
-          alt={author.name}
-          src={author.avatarUrl}
+          alt={author?.name}
+          src={author?.avatarUrl}
           sx={{
             zIndex: 9,
             top: 24,
@@ -59,9 +59,17 @@ export default function BlogPostCard({ post, index }) {
             position: 'absolute',
           }}
         />
-        <PostContent title={title} view={view} comment={comment} share={share} createdAt={createdAt} index={index} />
+        <PostContent
+          title={title}
+          id={_id['$oid']}
+          view={view}
+          comment={comment}
+          share={share}
+          createdAt={createdAt}
+          index={index}
+        />
         <OverlayStyle />
-        <Image alt="cover" src={cover} sx={{ height: 360 }} />
+        <Image alt="cover" src={cover?.preview} sx={{ height: 360 }} />
       </Card>
     );
   }
@@ -81,8 +89,8 @@ export default function BlogPostCard({ post, index }) {
           }}
         />
         <Avatar
-          alt={author.name}
-          src={author.avatarUrl}
+          alt={author?.name}
+          src={author?.avatarUrl}
           sx={{
             left: 24,
             zIndex: 9,
@@ -92,10 +100,10 @@ export default function BlogPostCard({ post, index }) {
             position: 'absolute',
           }}
         />
-        <Image alt="cover" src={cover} ratio="4/3" />
+        <Image alt="cover" src={cover?.preview} ratio="4/3" />
       </Box>
 
-      <PostContent title={title} view={view} comment={comment} share={share} createdAt={createdAt} />
+      <PostContent title={title} id={_id['$oid']} view={view} comment={comment} share={share} createdAt={createdAt} />
     </Card>
   );
 }
@@ -107,14 +115,15 @@ PostContent.propTypes = {
   createdAt: PropTypes.string,
   index: PropTypes.number,
   share: PropTypes.number,
+  id: PropTypes.any,
   title: PropTypes.string,
   view: PropTypes.number,
 };
 
-export function PostContent({ title, view, comment, share, createdAt, index }) {
+export function PostContent({ title, id, view, comment, share, createdAt, index }) {
   const isDesktop = useResponsive('up', 'md');
 
-  const linkTo = `${PATH_DASHBOARD.blog.root}/post/${paramCase(title)}`;
+  const linkTo = `${PATH_DASHBOARD.blog.root}/post/${id}`;
 
   const latestPostLarge = index === 0;
   const latestPostSmall = index === 1 || index === 2;

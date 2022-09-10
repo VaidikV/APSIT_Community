@@ -18,7 +18,6 @@ import { SkeletonPostItem } from '../../../components/skeleton';
 import { NewsPostCard } from '../../../sections/@dashboard/news';
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
 import { PATH_DASHBOARD } from '../../../routes/paths';
-import Iconify from '../../../components/Iconify';
 
 // ----------------------------------------------------------------------
 
@@ -44,30 +43,63 @@ const applySort = (posts, sortBy) => {
 export default function NewsPosts() {
   const { themeStretch } = useSettings();
 
-  const isMountedRef = useIsMountedRef();
-
-  const [posts, setPosts] = useState([]);
-
+  const posts = [
+    {
+      id: 'dfsadfdsafdsadsafsdafds',
+      cover: '/news/1.jpeg',
+      title: 'Welcome, AI-ML club🎉',
+      view: 0,
+      comment: 0,
+      share: 0,
+      author: 'Sana Sheikh',
+      createdAt: new Date().toDateString(),
+    },
+    {
+      id: 'dfsadfdsafssadsafsdafds',
+      cover: '/news/2.jpeg',
+      title: 'OP DevOps😎',
+      view: 0,
+      comment: 0,
+      share: 0,
+      author: 'Sana Sheikh',
+      createdAt: new Date().toDateString(),
+    },
+    {
+      id: 'dfsadfdsafddfdsfdsffds',
+      cover: '/news/3.jpeg',
+      title: 'Distribution of sanitary napkins in Sharda Vidyalaya.',
+      view: 0,
+      comment: 0,
+      share: 0,
+      author: 'Sana Sheikh',
+      createdAt: new Date().toDateString(),
+    },
+  ];
+  //
+  // const isMountedRef = useIsMountedRef();
+  //
+  // const [posts, setPosts] = useState([]);
+  //
   const [filters, setFilters] = useState('latest');
-
+  //
   const sortedPosts = applySort(posts, filters);
-
-  const getAllPosts = useCallback(async () => {
-    try {
-      const response = await axios.get('https://minimal-assets-api.vercel.app/api/blog/posts/all');
-
-      console.log(response);
-      if (isMountedRef.current) {
-        setPosts(response.data.posts.filter((element, idx) => idx < 3));
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  }, [isMountedRef]);
-
-  useEffect(() => {
-    getAllPosts();
-  }, [getAllPosts]);
+  //
+  // const getAllPosts = useCallback(async () => {
+  //   try {
+  //     const response = await axios.get('https://minimal-assets-api.vercel.app/api/blog/posts/all');
+  //
+  //     console.log(response);
+  //     if (isMountedRef.current) {
+  //       setPosts(response.data.posts.filter((element, idx) => idx < 3));
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }, [isMountedRef]);
+  //
+  // useEffect(() => {
+  //   getAllPosts();
+  // }, [getAllPosts]);
 
   return (
     <Page title="Home">

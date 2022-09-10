@@ -1,46 +1,9 @@
 // ----------------------------------------------------------------------
 
 export const title = [
-  'Apply These 7 Secret Techniques To Improve Event',
-  'Believing These 7 Myths About Event Keeps You From Growing',
-  "Don't Waste Time! 7 Facts Until You Reach Your Event",
-  'How 7 Things Will Change The Way You Approach Event',
-  "Event Awards: 7 Reasons Why They Don't Work & What You Can Do About It",
-  "Event Doesn't Have To Be Hard. Read These 7 Tips",
-  'Event Is Your Worst Enemy. 7 Ways To Defeat It',
-  'Event On A Budget: 7 Tips From The Great Depression',
-  'Knowing These 7 Secrets Will Make Your Event Look Amazing',
-  'Master The Art Of Event With These 7 Tips',
-  'My Life, My Job, My Career: How 7 Simple Event Helped Me Succeed',
-  'Take Advantage Of Event - Read These 7 Tips',
-  'The Next 7 Things You Should Do For Event Success',
-  'The Time Is Running Out! Think About These 7 Ways To Change Your Event',
-  'The 7 Best Things About Event',
-  'The 7 Biggest Event Mistakes You Can Easily Avoid',
-  'The 7 Most Successful Event Companies In Region',
-  'Think Your Event Is Safe? 7 Ways You Can Lose It Today',
-  "Thinking About Event? 7 Reasons Why It's Time To Stop!",
-  '7 Places To Get Deals On Event',
-  'Best Event Android Apps',
-  'Best Event Tips You Will Read This Year',
-  'Best 30 Tips For Event',
-  'Should Fixing Event Take 30 Steps?',
-  'The A - Z Of Event',
-  'The Next 30 Things To Immediately Do About Event',
-  'The Ultimate Guide To Event',
-  'Top 30 Funny Event Quotes',
-  'Top 30 Quotes On Event',
-  'Top 7 Lessons About Event To Learn Before You Hit 30',
-  'Top 7 Ways To Buy A Used Event',
-  '30 Best Ways To Sell Event',
-  '30 Ideas For Event',
-  '30 Lessons About Event You Need To Learn Before You Hit 40',
-  '30 Methods Of Event Domination',
-  '30 Things To Do Immediately About Event',
-  '30 Tips To Grow Your Event',
-  '30 Ways To Avoid Event Burnout',
-  '30 Ways To Improve Event',
-  'How To Make More Event By Doing Less'
+  'APSIT - In Top 5 Emerging Institutes of India.',
+  'Sejal Yadav - TE Comps C won first prize in Static Aero-Modelling.',
+  'Winner, Best Cost Report prize in the E-Cyclothon. 2nd runner up in Technothon.',
 ];
 
 export const sentence = [
@@ -83,13 +46,13 @@ export const sentence = [
   'Mollitia inventore recusandae provident aut.',
   'Numquam ullam beatae possimus.',
   'Fuga velit cupiditate ex culpa odio aut ut.',
-  'Vero corrupti nam voluptatum excepturi est et.'
+  'Vero corrupti nam voluptatum excepturi est et.',
 ];
 
 export const description = [
-  'Occaecati est et illo quibusdam accusamus qui. Incidunt aut et molestiae ut facere aut. Est quidem iusto praesentium excepturi harum nihil tenetur facilis. Ut omnis voluptates nihil accusantium doloribus eaque debitis.',
-  'Atque eaque ducimus minima distinctio velit. Laborum et veniam officiis. Delectus ex saepe hic id laboriosam officia. Odit nostrum qui illum saepe debitis ullam. Laudantium beatae modi fugit ut. Dolores consequatur beatae nihil voluptates rem maiores.',
-  'Rerum eius velit dolores. Explicabo ad nemo quibusdam. Voluptatem eum suscipit et ipsum et consequatur aperiam quia. Rerum nulla sequi recusandae illum velit quia quas. Et error laborum maiores cupiditate occaecati.',
+  'The objective of this research was to identify and rank Top Engineering Colleges in India. The survey had three major modules to arrive at the analysis and final ranking i.e. Desk Research, Perceptual and Factual survey (Participatory Survey).',
+  'Static aeromodellling is my event in which we make replica of og Aircraft with accurate measurements n cautiou using various things...one model could be sold more than 80k depending on Features n size. We have to first qualify ground and flying test then we get in our events',
+  'E- Cyclothon 2022 is the design challenge of electric bicycles for day today used by different society stakeholders. In this coemption electric bicycle design and manufacturing challenge was given to the students of different engineering and diploma colleges.',
   'Et non omnis qui. Qui sunt deserunt dolorem aut velit cumque adipisci aut enim. Nihil quis quisquam nesciunt dicta nobis ab aperiam dolorem repellat. Voluptates non blanditiis. Error et tenetur iste soluta cupiditate ratione perspiciatis et. Quibusdam aliquid nam sunt et quisquam non esse.',
   'Nihil ea sunt facilis praesentium atque. Ab animi alias sequi molestias aut velit ea. Sed possimus eos. Et est aliquid est voluptatem.',
   'Non rerum modi. Accusamus voluptatem odit nihil in. Quidem et iusto numquam veniam culpa aperiam odio aut enim. Quae vel dolores. Pariatur est culpa veritatis aut dolorem.',
@@ -126,5 +89,5 @@ export const description = [
   'Modi quia laboriosam qui ad aut. Fugit quisquam earum distinctio officia est fugit quos. Iure repellat distinctio veritatis voluptate amet ratione repudiandae.',
   'Impedit perferendis vel quis ratione. Id aut id officia. Illum fuga saepe provident voluptate eligendi provident. Et nostrum maxime magni. Nobis cumque id magni in iste earum.',
   'Dolor numquam maiores praesentium dolorem nihil minus praesentium rem dolorem. Est rerum placeat. Numquam sed magni aliquam laborum enim facere ducimus.',
-  'In sint enim nam et itaque et qui. Molestiae a iusto quidem quia temporibus id quia eaque eius. Quis quia consectetur saepe vero et molestias. Rem minima accusamus vitae adipisci molestiae unde voluptate consequatur molestiae. Rerum exercitationem quisquam vitae.'
+  'In sint enim nam et itaque et qui. Molestiae a iusto quidem quia temporibus id quia eaque eius. Quis quia consectetur saepe vero et molestias. Rem minima accusamus vitae adipisci molestiae unde voluptate consequatur molestiae. Rerum exercitationem quisquam vitae.',
 ];

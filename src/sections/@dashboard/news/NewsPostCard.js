@@ -4,20 +4,16 @@ import { paramCase } from 'change-case';
 import NextLink from 'next/link';
 // @mui
 import { alpha, styled } from '@mui/material/styles';
-import { Box, Card, Avatar, Typography, CardContent, Link, Stack } from '@mui/material';
+import { Box, Card, Typography, CardContent, Link } from '@mui/material';
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
 // hooks
 import useResponsive from '../../../hooks/useResponsive';
 // utils
 import { fDate } from '../../../utils/formatTime';
-import { fShortenNumber } from '../../../utils/formatNumber';
 // components
 import Image from '../../../components/Image';
-import Iconify from '../../../components/Iconify';
 import TextMaxLine from '../../../components/TextMaxLine';
-import SvgIconStyle from '../../../components/SvgIconStyle';
-import TextIconLabel from '../../../components/TextIconLabel';
 
 // ----------------------------------------------------------------------
 

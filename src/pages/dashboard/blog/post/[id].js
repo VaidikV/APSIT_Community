@@ -19,13 +19,7 @@ import Markdown from '../../../../components/Markdown';
 import HeaderBreadcrumbs from '../../../../components/HeaderBreadcrumbs';
 import { SkeletonPost } from '../../../../components/skeleton';
 // sections
-import {
-  BlogPostHero,
-  BlogPostTags,
-  BlogPostRecent,
-  BlogPostCommentList,
-  BlogPostCommentForm,
-} from '../../../../sections/@dashboard/blog';
+import { BlogPostHero, BlogPostTags, BlogPostRecent, BlogPostCommentForm } from '../../../../sections/@dashboard/blog';
 
 // ----------------------------------------------------------------------
 
@@ -42,9 +36,7 @@ export default function BlogPost() {
 
   const { query } = useRouter();
 
-  const { title } = query;
-
-  const [recentPosts, setRecentPosts] = useState([]);
+  const { id } = query;
 
   const [post, setPost] = useState(null);
 
@@ -52,10 +44,11 @@ export default function BlogPost() {
 
   const getPost = useCallback(async () => {
     try {
-      const response = await axios.get('/api/blog/post', {
-        params: { title },
+      const response = await axios.get('/post', {
+        params: { id },
       });
 
+      console.log(response.data.post);
       if (isMountedRef.current) {
         setPost(response.data.post);
       }
@@ -63,26 +56,26 @@ export default function BlogPost() {
       console.error(error);
       setError(error.message);
     }
-  }, [isMountedRef, title]);
+  }, [isMountedRef, id]);
 
-  const getRecentPosts = useCallback(async () => {
-    try {
-      const response = await axios.get('/api/blog/posts/recent', {
-        params: { title },
-      });
-
-      if (isMountedRef.current) {
-        setRecentPosts(response.data.recentPosts);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  }, [isMountedRef, title]);
+  // const getRecentPosts = useCallback(async () => {
+  //   try {
+  //     const response = await axios.get('/api/blog/posts/recent', {
+  //       params: { id },
+  //     });
+  //
+  //     if (isMountedRef.current) {
+  //       setRecentPosts(response.data.recentPosts);
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }, [isMountedRef, id]);
 
   useEffect(() => {
     getPost();
-    getRecentPosts();
-  }, [getRecentPosts, getPost]);
+    // getRecentPosts();
+  }, [getPost]);
 
   return (
     <Page title="Blog: Post Details">
@@ -92,7 +85,7 @@ export default function BlogPost() {
           links={[
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
             { name: 'Blog', href: PATH_DASHBOARD.blog.root },
-            { name: sentenceCase(title) },
+            { name: sentenceCase(post?.title || 'Fetching') },
           ]}
         />
 
@@ -105,7 +98,7 @@ export default function BlogPost() {
                 {post.description}
               </Typography>
 
-              <Markdown children={post.body} />
+              <Markdown children={post.content} />
 
               <Box sx={{ my: 5 }}>
                 <Divider />
@@ -120,7 +113,7 @@ export default function BlogPost() {
                 </Typography>
               </Box>
 
-              <BlogPostCommentList post={post} />
+              {/*<BlogPostCommentList post={post} />*/}
 
               <Box sx={{ mb: 5, mt: 3, display: 'flex', justifyContent: 'flex-end' }}>
                 <Pagination count={8} color="primary" />
@@ -135,7 +128,7 @@ export default function BlogPost() {
 
         {error && <Typography variant="h6">404 {error}!</Typography>}
 
-        <BlogPostRecent posts={recentPosts} />
+        {/*<BlogPostRecent posts={recentPosts} />*/}
       </Container>
     </Page>
   );
