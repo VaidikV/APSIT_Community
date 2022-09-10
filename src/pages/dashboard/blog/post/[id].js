@@ -19,7 +19,7 @@ import Markdown from '../../../../components/Markdown';
 import HeaderBreadcrumbs from '../../../../components/HeaderBreadcrumbs';
 import { SkeletonPost } from '../../../../components/skeleton';
 // sections
-import { BlogPostHero, BlogPostTags, BlogPostRecent, BlogPostCommentForm } from '../../../../sections/@dashboard/blog';
+import { BlogPostHero, BlogPostTags, BlogPostCommentForm } from '../../../../sections/@dashboard/blog';
 
 // ----------------------------------------------------------------------
 
