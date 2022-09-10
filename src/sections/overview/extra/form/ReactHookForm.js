@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 // form
-import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, Controller } from 'react-hook-form';
 // @mui
 import { Stack, Grid, Button, TextField, Typography, IconButton, InputAdornment, FormHelperText } from '@mui/material';
