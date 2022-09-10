@@ -4,20 +4,16 @@ import { paramCase } from 'change-case';
 import NextLink from 'next/link';
 // @mui
 import { alpha, styled } from '@mui/material/styles';
-import { Box, Card, Avatar, Typography, CardContent, Link, Stack } from '@mui/material';
+import { Box, Card, Typography, CardContent, Link } from '@mui/material';
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
 // hooks
 import useResponsive from '../../../hooks/useResponsive';
 // utils
 import { fDate } from '../../../utils/formatTime';
-import { fShortenNumber } from '../../../utils/formatNumber';
 // components
 import Image from '../../../components/Image';
-import Iconify from '../../../components/Iconify';
 import TextMaxLine from '../../../components/TextMaxLine';
-import SvgIconStyle from '../../../components/SvgIconStyle';
-import TextIconLabel from '../../../components/TextIconLabel';
 
 // ----------------------------------------------------------------------
 
@@ -32,44 +28,24 @@ const OverlayStyle = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-BlogPostCard.propTypes = {
+NewsPostCard.propTypes = {
   post: PropTypes.object.isRequired,
   index: PropTypes.number,
 };
 
-export default function BlogPostCard({ post, index }) {
+export default function NewsPostCard({ post, index }) {
   const isDesktop = useResponsive('up', 'md');
 
-  const { cover, title, _id, view, comment, share, author, createdAt } = post;
+  const { cover, title, view, comment, share, author, createdAt } = post;
 
   const latestPost = index === 0 || index === 1 || index === 2;
 
   if (isDesktop && latestPost) {
     return (
       <Card>
-        <Avatar
-          alt={author?.name}
-          src={author?.avatarUrl}
-          sx={{
-            zIndex: 9,
-            top: 24,
-            left: 24,
-            width: 40,
-            height: 40,
-            position: 'absolute',
-          }}
-        />
-        <PostContent
-          title={title}
-          id={_id['$oid']}
-          view={view}
-          comment={comment}
-          share={share}
-          createdAt={createdAt}
-          index={index}
-        />
+        <PostContent title={title} view={view} comment={comment} share={share} createdAt={createdAt} index={index} />
         <OverlayStyle />
-        <Image alt="cover" src={cover?.preview} sx={{ height: 360 }} />
+        <Image alt="cover" src={cover} sx={{ height: 360 }} />
       </Card>
     );
   }
@@ -77,33 +53,10 @@ export default function BlogPostCard({ post, index }) {
   return (
     <Card>
       <Box sx={{ position: 'relative' }}>
-        <SvgIconStyle
-          src="https://minimal-assets-api.vercel.app/assets/icons/shape-avatar.svg"
-          sx={{
-            width: 80,
-            height: 36,
-            zIndex: 9,
-            bottom: -15,
-            position: 'absolute',
-            color: 'background.paper',
-          }}
-        />
-        <Avatar
-          alt={author?.name}
-          src={author?.avatarUrl}
-          sx={{
-            left: 24,
-            zIndex: 9,
-            width: 32,
-            height: 32,
-            bottom: -16,
-            position: 'absolute',
-          }}
-        />
-        <Image alt="cover" src={cover?.preview} ratio="4/3" />
+        <Image alt="cover" src={cover} ratio="4/3" />
       </Box>
 
-      <PostContent title={title} id={_id['$oid']} view={view} comment={comment} share={share} createdAt={createdAt} />
+      <PostContent title={title} view={view} comment={comment} share={share} createdAt={createdAt} />
     </Card>
   );
 }
@@ -115,15 +68,14 @@ PostContent.propTypes = {
   createdAt: PropTypes.string,
   index: PropTypes.number,
   share: PropTypes.number,
-  id: PropTypes.any,
   title: PropTypes.string,
   view: PropTypes.number,
 };
 
-export function PostContent({ title, id, view, comment, share, createdAt, index }) {
+export function PostContent({ title, view, comment, share, createdAt, index }) {
   const isDesktop = useResponsive('up', 'md');
 
-  const linkTo = `${PATH_DASHBOARD.blog.root}/post/${id}`;
+  const linkTo = `${PATH_DASHBOARD.news.root}/post/${paramCase(title)}`;
 
   const latestPostLarge = index === 0;
   const latestPostSmall = index === 1 || index === 2;
@@ -170,29 +122,6 @@ export function PostContent({ title, id, view, comment, share, createdAt, index 
           </TextMaxLine>
         </Link>
       </NextLink>
-
-      <Stack
-        flexWrap="wrap"
-        direction="row"
-        justifyContent="flex-end"
-        sx={{
-          mt: 3,
-          color: 'text.disabled',
-          ...((latestPostLarge || latestPostSmall) && {
-            opacity: 0.64,
-            color: 'common.white',
-          }),
-        }}
-      >
-        {POST_INFO.map((info, index) => (
-          <TextIconLabel
-            key={index}
-            icon={<Iconify icon={info.icon} sx={{ width: 16, height: 16, mr: 0.5 }} />}
-            value={fShortenNumber(info.number)}
-            sx={{ typography: 'caption', ml: index === 0 ? 0 : 1.5 }}
-          />
-        ))}
-      </Stack>
     </CardContent>
   );
 }

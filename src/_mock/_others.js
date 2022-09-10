@@ -3,7 +3,7 @@ import { randomInArray } from './funcs';
 
 // ----------------------------------------------------------------------
 
-export const _carouselsExample = [...Array(5)].map((_, index) => ({
+export const _carouselsExample = [...Array(3)].map((_, index) => ({
   id: _mock.id(index),
   title: _mock.text.title(index),
   image: _mock.image.feed(index),
@@ -127,13 +127,9 @@ export const _contacts = [...Array(20)].map((_, index) => ({
 
 export const _notifications = [...Array(5)].map((_, index) => ({
   id: _mock.id(index),
-  title: [
-    'Your order is placed',
-    'Sylvan King',
-    'You have new message',
-    'You have new mail',
-    'Delivery processing',
-  ][index],
+  title: ['Your order is placed', 'Sylvan King', 'You have new message', 'You have new mail', 'Delivery processing'][
+    index
+  ],
   description: [
     'waiting for shipping',
     'answered to your comment on the Minimal',

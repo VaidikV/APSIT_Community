@@ -1,23 +1,20 @@
 import orderBy from 'lodash/orderBy';
 import { useEffect, useCallback, useState } from 'react';
-// next
-import NextLink from 'next/link';
+
 // @mui
-import { Grid, Button, Container, Stack } from '@mui/material';
+import { Grid, Container, Stack } from '@mui/material';
 // hooks
 import useSettings from '../../../hooks/useSettings';
 import useIsMountedRef from '../../../hooks/useIsMountedRef';
 // utils
 import axios from '../../../utils/axios';
-// routes
-import { PATH_DASHBOARD } from '../../../routes/paths';
+
 // layouts
 import Layout from '../../../layouts';
 // components
 import Page from '../../../components/Page';
-import Iconify from '../../../components/Iconify';
 import { SkeletonPostItem } from '../../../components/skeleton';
-import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
+
 // sections
 import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from '../../../sections/@dashboard/blog';
 
@@ -64,8 +61,9 @@ export default function BlogPosts() {
 
   const getAllPosts = useCallback(async () => {
     try {
-      const response = await axios.get('/api/blog/posts/all');
+      const response = await axios.get('/posts');
 
+      console.log(response.data.posts);
       if (isMountedRef.current) {
         setPosts(response.data.posts);
       }
@@ -85,7 +83,7 @@ export default function BlogPosts() {
   };
 
   return (
-    <Page title="Blog: Posts">
+    <Page title="Home">
       <Container maxWidth={themeStretch ? false : 'lg'}>
         <Stack mb={5} direction="row" alignItems="center" justifyContent="space-between">
           <BlogPostsSearch />
@@ -95,7 +93,7 @@ export default function BlogPosts() {
         <Grid container spacing={3}>
           {(!posts.length ? [...Array(12)] : sortedPosts).map((post, index) =>
             post ? (
-              <Grid key={post.id} item xs={12} sm={6} md={(index === 0 && 6) || 3}>
+              <Grid key={post._id['$oid']} item xs={12} sm={6} md={(index === 0 && 6) || 3}>
                 <BlogPostCard post={post} index={index} />
               </Grid>
             ) : (

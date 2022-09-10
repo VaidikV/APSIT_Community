@@ -40,7 +40,7 @@ export default function BlogPostTags({ post }) {
             '& .MuiAvatar-root': { width: 32, height: 32 },
           }}
         >
-          {favoritePerson.map((person) => (
+          {favoritePerson?.map((person) => (
             <Avatar key={person.name} alt={person.name} src={person.avatarUrl} />
           ))}
         </AvatarGroup>

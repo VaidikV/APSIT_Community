@@ -24,7 +24,7 @@ const ACTIVITY_OPTIONS = [
 const APPLICATION_OPTIONS = [
   { value: 'applicationNews', label: 'News and announcements' },
   { value: 'applicationProduct', label: 'Weekly product updates' },
-  { value: 'applicationBlog', label: 'Weekly blog digest' },
+  { value: 'applicationBlog', label: 'Weekly news digest' },
 ];
 
 const NOTIFICATION_SETTINGS = {

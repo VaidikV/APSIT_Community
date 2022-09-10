@@ -64,19 +64,6 @@ export default function AboutTeam() {
         </Typography>
       </m.div>
 
-      <m.div variants={varFade().inUp}>
-        <Typography
-          sx={{
-            mx: 'auto',
-            maxWidth: 630,
-            color: (theme) => (theme.palette.mode === 'light' ? 'text.secondary' : 'common.white'),
-          }}
-        >
-          Minimal will provide you support if you have any problems, our support team will reply within a day and we
-          also have detailed documentation.
-        </Typography>
-      </m.div>
-
       <Box sx={{ position: 'relative' }}>
         <CarouselArrows filled onNext={handleNext} onPrevious={handlePrevious}>
           <Slider ref={carouselRef} {...settings}>

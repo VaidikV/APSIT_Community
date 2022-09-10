@@ -164,7 +164,6 @@ export default function Calendar() {
         <HeaderBreadcrumbs
           heading="Calendar"
           links={[{ name: 'Dashboard', href: PATH_DASHBOARD.root }, { name: 'Calendar' }]}
-          moreLink="https://fullcalendar.io/docs/react"
           action={
             <Button
               variant="contained"

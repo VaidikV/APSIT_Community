@@ -10,8 +10,7 @@ import { MotionContainer, TextAnimate, varFade } from '../../components/animate'
 const RootStyle = styled('div')(({ theme }) => ({
   backgroundSize: 'cover',
   backgroundPosition: 'center',
-  backgroundImage:
-    'url(https://minimal-assets-api.vercel.app/assets/overlay.svg), url(https://minimal-assets-api.vercel.app/assets/images/about/hero.jpg)',
+  backgroundImage: 'url(https://minimals.cc/assets/overlay.svg)',
   padding: theme.spacing(10, 0),
   [theme.breakpoints.up('md')]: {
     height: 560,

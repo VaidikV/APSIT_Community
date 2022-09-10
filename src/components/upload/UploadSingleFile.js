@@ -61,7 +61,7 @@ export default function UploadSingleFile({ error = false, file, helperText, sx, 
         {file && (
           <Image
             alt="file preview"
-            src={isString(file) ? file : file.preview}
+            src={isString(file) ? file : file.preview.toString()}
             sx={{
               top: 8,
               left: 8,

@@ -17,7 +17,7 @@ import { RHFSwitch, RHFEditor, FormProvider, RHFTextField, RHFUploadSingleFile }
 //
 import BlogNewPostPreview from './BlogNewPostPreview';
 import axios from '../../../utils/axios';
-import { setSession } from '../../../utils/jwt';
+import useAuth from '../../../hooks/useAuth';
 
 // ----------------------------------------------------------------------
 
@@ -50,6 +50,8 @@ export default function BlogNewPostForm() {
 
   const [open, setOpen] = useState(false);
 
+  const { user } = useAuth();
+
   const { enqueueSnackbar } = useSnackbar();
 
   const handleOpenPreview = () => {
@@ -68,16 +70,24 @@ export default function BlogNewPostForm() {
   });
 
   const defaultValues = {
+    view: 0,
+    comment: 0,
+    share: 0,
+    author: {
+      name: user.displayName,
+      avatarUrl: user.avatarUrl,
+    },
+    createdAt: new Date().toDateString(),
     title: '',
     description: '',
     content: '',
     cover: null,
-    tags: ['Logan'],
+    tags: [],
     publish: true,
     comments: true,
     metaTitle: '',
     metaDescription: '',
-    metaKeywords: ['Logan'],
+    metaKeywords: [],
   };
 
   const methods = useForm({
@@ -99,11 +109,11 @@ export default function BlogNewPostForm() {
   const onSubmit = async (postData) => {
     console.log(postData);
     try {
-      const response = await axios.post('/create-post', postData);
+      await axios.post('/create-post', postData);
       reset();
       handleClosePreview();
-      enqueueSnackbar(response.data.message);
-      push(PATH_DASHBOARD.blog.posts);
+      enqueueSnackbar('Created new post successfully!');
+      push(PATH_DASHBOARD.general.app);
     } catch (error) {
       enqueueSnackbar(error.message, { variant: 'error' });
     }
@@ -113,14 +123,18 @@ export default function BlogNewPostForm() {
     (acceptedFiles) => {
       const file = acceptedFiles[0];
 
-      if (file) {
-        setValue(
-          'cover',
-          Object.assign(file, {
-            preview: URL.createObjectURL(file),
-          })
-        );
-      }
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        if (file) {
+          setValue(
+            'cover',
+            Object.assign(file, {
+              preview: e.target.result,
+            })
+          );
+        }
+      };
+      reader.readAsDataURL(file);
     },
     [setValue]
   );
