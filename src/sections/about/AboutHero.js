@@ -40,20 +40,6 @@ export default function AboutHero() {
             <TextAnimate text="we" sx={{ mr: 2 }} />
             <TextAnimate text="are?" />
           </Box>
-
-          <m.div variants={varFade().inRight}>
-            <Typography
-              variant="h4"
-              sx={{
-                mt: 5,
-                color: 'common.white',
-                fontWeight: 'fontWeightMedium',
-              }}
-            >
-              Let's work together and
-              <br /> make awesome site easily
-            </Typography>
-          </m.div>
         </ContentStyle>
       </Container>
     </RootStyle>

@@ -75,15 +75,6 @@ export default function AboutTeam() {
           </Slider>
         </CarouselArrows>
       </Box>
-      <Button
-        variant="outlined"
-        color="inherit"
-        size="large"
-        endIcon={<Iconify icon={'ic:round-arrow-right-alt'} width={24} height={24} />}
-        sx={{ mx: 'auto' }}
-      >
-        View all team members
-      </Button>
     </Container>
   );
 }
