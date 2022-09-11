@@ -63,7 +63,6 @@ export default function BlogPosts() {
     try {
       const response = await axios.get('/posts');
 
-      console.log(response.data.posts);
       if (isMountedRef.current) {
         setPosts(response.data.posts);
       }

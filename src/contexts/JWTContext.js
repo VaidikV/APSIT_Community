@@ -112,7 +112,6 @@ function AuthProvider({ children }) {
     const response = await axios.post('/find-user', userDetails);
 
     if (response.status === 200) {
-      console.log(response);
       const { accessToken, user } = response.data;
 
       setSession(accessToken);
@@ -129,7 +128,6 @@ function AuthProvider({ children }) {
 
   const register = async (newUserDetails) => {
     const response = await axios.post('/add-user', newUserDetails);
-    console.log(response);
     const { accessToken, user } = response.data;
 
     window.localStorage.setItem('accessToken', accessToken);

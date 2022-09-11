@@ -64,9 +64,9 @@ export default function BlogNewPostForm() {
 
   const NewBlogSchema = Yup.object().shape({
     title: Yup.string().required('Title is required'),
-    description: Yup.string().required('Description is required'),
+    description: Yup.string(),
     content: Yup.string().min(20).required('Content is required'),
-    cover: Yup.mixed().required('Cover is required'),
+    cover: Yup.mixed(),
   });
 
   const defaultValues = {
@@ -164,68 +164,6 @@ export default function BlogNewPostForm() {
           </Grid>
 
           <Grid item xs={12} md={4}>
-            <Card sx={{ p: 3 }}>
-              <Stack spacing={3}>
-                <div>
-                  <RHFSwitch
-                    name="publish"
-                    label="Publish"
-                    labelPlacement="start"
-                    sx={{ mb: 1, mx: 0, width: 1, justifyContent: 'space-between' }}
-                  />
-
-                  <RHFSwitch
-                    name="comments"
-                    label="Enable comments"
-                    labelPlacement="start"
-                    sx={{ mx: 0, width: 1, justifyContent: 'space-between' }}
-                  />
-                </div>
-
-                <Controller
-                  name="tags"
-                  control={control}
-                  render={({ field }) => (
-                    <Autocomplete
-                      multiple
-                      freeSolo
-                      onChange={(event, newValue) => field.onChange(newValue)}
-                      options={TAGS_OPTION.map((option) => option)}
-                      renderTags={(value, getTagProps) =>
-                        value.map((option, index) => (
-                          <Chip {...getTagProps({ index })} key={option} size="small" label={option} />
-                        ))
-                      }
-                      renderInput={(params) => <TextField label="Tags" {...params} />}
-                    />
-                  )}
-                />
-
-                <RHFTextField name="metaTitle" label="Meta title" />
-
-                <RHFTextField name="metaDescription" label="Meta description" fullWidth multiline rows={3} />
-
-                <Controller
-                  name="metaKeywords"
-                  control={control}
-                  render={({ field }) => (
-                    <Autocomplete
-                      multiple
-                      freeSolo
-                      onChange={(event, newValue) => field.onChange(newValue)}
-                      options={TAGS_OPTION.map((option) => option)}
-                      renderTags={(value, getTagProps) =>
-                        value.map((option, index) => (
-                          <Chip {...getTagProps({ index })} key={option} size="small" label={option} />
-                        ))
-                      }
-                      renderInput={(params) => <TextField label="Meta keywords" {...params} />}
-                    />
-                  )}
-                />
-              </Stack>
-            </Card>
-
             <Stack direction="row" spacing={1.5} sx={{ mt: 3 }}>
               <Button fullWidth color="inherit" variant="outlined" size="large" onClick={handleOpenPreview}>
                 Preview

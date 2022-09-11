@@ -127,15 +127,15 @@ export const _contacts = [...Array(20)].map((_, index) => ({
 
 export const _notifications = [...Array(5)].map((_, index) => ({
   id: _mock.id(index),
-  title: ['Your order is placed', 'Sylvan King', 'You have new message', 'You have new mail', 'Delivery processing'][
+  title: ['Your post is live', 'Sylvan King', 'You have new message', 'You have new mail', 'Your post got comment'][
     index
   ],
   description: [
-    'waiting for shipping',
-    'answered to your comment on the Minimal',
+    'See your post',
+    'answered to your comment',
     '5 unread messages',
     'sent from Guido Padberg',
-    'Your order is being shipped',
+    'Abhishek has commented on your post',
   ][index],
   avatar: [null, _mock.image.avatar(2), null, null, null][index],
   type: ['order_placed', 'friend_interactive', 'chat_message', 'mail', 'order_shipped'][index],
