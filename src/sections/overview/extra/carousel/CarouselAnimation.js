@@ -4,7 +4,7 @@ import { m } from 'framer-motion';
 import { useState, useRef } from 'react';
 // @mui
 import { alpha, useTheme } from '@mui/material/styles';
-import { Box, Card, Paper, Button, Typography, CardContent } from '@mui/material';
+import { Box, Card, Paper, Typography, CardContent } from '@mui/material';
 // _mock_
 import { _carouselsExample } from '../../../../_mock';
 // components
