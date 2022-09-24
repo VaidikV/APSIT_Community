@@ -15,9 +15,9 @@ const isValidToken = (accessToken) => {
   return decoded.exp > currentTime;
 };
 
-//  const handleTokenExpired = (exp) => {
+// const handleTokenExpired = (exp) => {
 //   let expiredTimer;
-
+//
 //   window.clearTimeout(expiredTimer);
 //   const currentTime = Date.now();
 //   const timeLeft = exp * 1000 - currentTime;

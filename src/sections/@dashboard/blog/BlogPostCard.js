@@ -160,7 +160,7 @@ export function PostContent({ title, id, view, comment, share, createdAt, index 
           }),
         }}
       >
-        {fDate(createdAt)}
+        {fDate(createdAt ? createdAt : new Date())}
       </Typography>
 
       <NextLink href={linkTo} passHref>

@@ -25,7 +25,6 @@ export default function BlogPostTags({ post }) {
         <FormControlLabel
           control={
             <Checkbox
-              defaultChecked
               size="small"
               color="error"
               icon={<Iconify icon="eva:heart-fill" />}
@@ -44,6 +43,18 @@ export default function BlogPostTags({ post }) {
             <Avatar key={person.name} alt={person.name} src={person.avatarUrl} />
           ))}
         </AvatarGroup>
+        <FormControlLabel
+          control={
+            <Checkbox
+              defaultChecked={false}
+              size="small"
+              color="success"
+              icon={<Iconify icon="eva:bookmark-outline" />}
+              checkedIcon={<Iconify icon="eva:bookmark-fill" />}
+            />
+          }
+          label={'Bookmark'}
+        />
       </Box>
     </Box>
   );

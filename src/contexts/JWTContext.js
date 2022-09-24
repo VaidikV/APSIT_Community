@@ -74,7 +74,8 @@ function AuthProvider({ children }) {
         if (accessToken && isValidToken(accessToken)) {
           setSession(accessToken);
 
-          const response = await axios.get('/users/get-info');
+          const response = await axios.get('/get-user');
+          console.log(response);
           const { user } = response.data;
 
           dispatch({
@@ -111,6 +112,7 @@ function AuthProvider({ children }) {
   const login = async (userDetails) => {
     const response = await axios.post('/find-user', userDetails);
 
+    console.log(response);
     if (response.status === 200) {
       const { accessToken, user } = response.data;
 

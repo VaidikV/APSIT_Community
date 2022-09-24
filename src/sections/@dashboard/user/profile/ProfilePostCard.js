@@ -16,6 +16,8 @@ import {
   AvatarGroup,
   InputAdornment,
   FormControlLabel,
+  MenuItem,
+  Divider,
 } from '@mui/material';
 // hooks
 import useAuth from '../../../../hooks/useAuth';
@@ -27,6 +29,12 @@ import Image from '../../../../components/Image';
 import Iconify from '../../../../components/Iconify';
 import MyAvatar from '../../../../components/MyAvatar';
 import EmojiPicker from '../../../../components/EmojiPicker';
+import MenuPopover from '../../../../components/MenuPopover';
+// util
+import axios from '../../../../utils/axios';
+import { useSnackbar } from 'notistack';
+import { useRouter } from 'next/router';
+import { PATH_DASHBOARD } from '../../../../routes/paths';
 
 // ----------------------------------------------------------------------
 
@@ -86,11 +94,7 @@ export default function ProfilePostCard({ post }) {
             {fDate(post.createdAt)}
           </Typography>
         }
-        action={
-          <IconButton>
-            <Iconify icon={'eva:more-vertical-fill'} width={20} height={20} />
-          </IconButton>
-        }
+        action={<MoreMenuButton postId={post.id} />}
       />
 
       <Stack spacing={3} sx={{ p: 3 }}>
@@ -188,5 +192,87 @@ export default function ProfilePostCard({ post }) {
         </Stack>
       </Stack>
     </Card>
+  );
+}
+
+// ------------------------------------------------------------------------------
+MoreMenuButton.propTypes = {
+  postId: PropTypes.string,
+};
+
+function MoreMenuButton({ postId }) {
+  const [open, setOpen] = useState(null);
+  const { enqueueSnackbar } = useSnackbar();
+  const { push } = useRouter();
+  const linkTo = `${PATH_DASHBOARD.blog.root}/post/edit/${postId}`;
+  // --------------------------------------------------------------------------
+  const postDeleteHandler = async () => {
+    try {
+      axios
+        .post('/delete-post', {
+          id: postId,
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            enqueueSnackbar('Commented on post');
+          }
+        });
+    } catch (e) {
+      enqueueSnackbar(e.message, {
+        variant: 'error',
+      });
+    }
+  };
+
+  // --------------------------------------------------------------------------
+  const postEditHadler = () => {
+    push(linkTo);
+  };
+  const handleOpen = (event) => {
+    setOpen(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setOpen(null);
+  };
+
+  const ICON = {
+    mr: 2,
+    width: 20,
+    height: 20,
+  };
+
+  return (
+    <>
+      <IconButton size="large" onClick={handleOpen}>
+        <Iconify icon={'eva:more-vertical-fill'} width={20} height={20} />
+      </IconButton>
+
+      <MenuPopover
+        open={Boolean(open)}
+        anchorEl={open}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+        arrow="right-top"
+        sx={{
+          mt: -0.5,
+          width: 160,
+          '& .MuiMenuItem-root': { px: 1, typography: 'body2', borderRadius: 0.75 },
+        }}
+      >
+        <MenuItem onClick={postEditHadler}>
+          <Iconify icon={'eva:edit-fill'} sx={{ ...ICON }} />
+          Edit
+        </MenuItem>
+
+        <Divider sx={{ borderStyle: 'dashed' }} />
+
+        <MenuItem sx={{ color: 'error.main' }} onClick={postDeleteHandler}>
+          <Iconify icon={'eva:trash-2-outline'} sx={{ ...ICON }} />
+          Delete
+        </MenuItem>
+      </MenuPopover>
+    </>
   );
 }

@@ -28,7 +28,11 @@ export default function BlogNewPost() {
       <Container maxWidth={themeStretch ? false : 'lg'}>
         <HeaderBreadcrumbs
           heading="Create a new post"
-          links={[{ name: 'Dashboard', href: PATH_DASHBOARD.root }, { name: 'New Post' }]}
+          links={[
+            { name: 'Dashboard', href: PATH_DASHBOARD.root },
+            { name: 'Blog', href: PATH_DASHBOARD.blog.root },
+            { name: 'New Post' },
+          ]}
         />
 
         <BlogNewPostForm />

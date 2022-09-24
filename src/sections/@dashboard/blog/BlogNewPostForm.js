@@ -5,38 +5,22 @@ import { useSnackbar } from 'notistack';
 import { useRouter } from 'next/router';
 // form
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 // @mui
 import { LoadingButton } from '@mui/lab';
 import { styled } from '@mui/material/styles';
-import { Grid, Card, Chip, Stack, Button, TextField, Typography, Autocomplete } from '@mui/material';
+import { Grid, Card, Stack, Button, Typography } from '@mui/material';
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
 //components
-import { RHFSwitch, RHFEditor, FormProvider, RHFTextField, RHFUploadSingleFile } from '../../../components/hook-form';
+import { RHFEditor, FormProvider, RHFTextField, RHFUploadSingleFile } from '../../../components/hook-form';
 //
 import BlogNewPostPreview from './BlogNewPostPreview';
 import axios from '../../../utils/axios';
 import useAuth from '../../../hooks/useAuth';
+import PropTypes from 'prop-types';
 
 // ----------------------------------------------------------------------
-
-const TAGS_OPTION = [
-  'Toy Story 3',
-  'Logan',
-  'Full Metal Jacket',
-  'Dangal',
-  'The Sting',
-  '2001: A Space Odyssey',
-  "Singin' in the Rain",
-  'Toy Story',
-  'Bicycle Thieves',
-  'The Kid',
-  'Inglourious Basterds',
-  'Snatch',
-  '3 Idiots',
-];
-
 const LabelStyle = styled(Typography)(({ theme }) => ({
   ...theme.typography.subtitle2,
   color: theme.palette.text.secondary,
@@ -45,7 +29,12 @@ const LabelStyle = styled(Typography)(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function BlogNewPostForm() {
+BlogNewPostForm.propTypes = {
+  isEdit: PropTypes.bool,
+  post: PropTypes.object,
+};
+
+export default function BlogNewPostForm({ isEdit, post }) {
   const { push } = useRouter();
 
   const [open, setOpen] = useState(false);
@@ -65,7 +54,7 @@ export default function BlogNewPostForm() {
   const NewBlogSchema = Yup.object().shape({
     title: Yup.string().required('Title is required'),
     description: Yup.string(),
-    content: Yup.string().min(20).required('Content is required'),
+    content: Yup.string().min(100).required('Content is required'),
     cover: Yup.mixed(),
   });
 
@@ -88,6 +77,7 @@ export default function BlogNewPostForm() {
     metaTitle: '',
     metaDescription: '',
     metaKeywords: [],
+    ...post,
   };
 
   const methods = useForm({
@@ -98,7 +88,6 @@ export default function BlogNewPostForm() {
   const {
     reset,
     watch,
-    control,
     setValue,
     handleSubmit,
     formState: { isSubmitting, isValid },
@@ -109,10 +98,10 @@ export default function BlogNewPostForm() {
   const onSubmit = async (postData) => {
     console.log(postData);
     try {
-      await axios.post('/create-post', postData);
+      await axios.post(isEdit ? '/edit-post' : '/create-post', postData);
       reset();
       handleClosePreview();
-      enqueueSnackbar('Created new post successfully!');
+      enqueueSnackbar(isEdit ? 'Post updated successfully' : 'Created new post successfully!');
       push(PATH_DASHBOARD.general.app);
     } catch (error) {
       enqueueSnackbar(error.message, { variant: 'error' });
