@@ -1,8 +1,7 @@
 // ---------------------------------------------------------------------
 import useSettings from '../../../../../hooks/useSettings';
 import { useRouter } from 'next/router';
-import { useCallback, useEffect, useState } from 'react';
-import useIsMountedRef from '../../../../../hooks/useIsMountedRef';
+import { useEffect, useState } from 'react';
 import axios from '../../../../../utils/axios';
 import HeaderBreadcrumbs from '../../../../../components/HeaderBreadcrumbs';
 import { Container, Typography } from '@mui/material';
@@ -29,27 +28,26 @@ export default function EditPost() {
   const [post, setPost] = useState(null);
 
   const [error, setError] = useState(null);
-  const isMountedRef = useIsMountedRef();
-
-  const getPost = useCallback(async () => {
-    try {
-      const response = await axios.get('/post', {
-        params: { id },
-      });
-
-      console.log(response.data.post);
-      if (isMountedRef.current) {
-        setPost(response.data.post);
-      }
-    } catch (error) {
-      console.error(error);
-      setError(error.message);
-    }
-  }, [isMountedRef, id]);
 
   useEffect(() => {
-    getPost();
-  });
+    axios
+      .get('/post', {
+        params: { id },
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          setPost(response.data.post);
+        }
+
+        if (response.data.post.length === 0) {
+          setError('No post found');
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        setError(error.message);
+      });
+  }, []);
 
   return (
     <Page title="Blog: Post Edit">
@@ -64,7 +62,7 @@ export default function EditPost() {
           ]}
         />
 
-        <BlogNewPostForm isEdit={true} post={post} />
+        {post && <BlogNewPostForm isEdit={true} post={post} />}
         {error && <Typography variant="h6">404 {error}!</Typography>}
       </Container>
     </Page>

@@ -37,6 +37,7 @@ BlogNewPostForm.propTypes = {
 export default function BlogNewPostForm({ isEdit, post }) {
   const { push } = useRouter();
 
+  console.log(post);
   const [open, setOpen] = useState(false);
 
   const { user } = useAuth();
@@ -64,6 +65,7 @@ export default function BlogNewPostForm({ isEdit, post }) {
     share: 0,
     author: {
       name: user.displayName,
+      moodleId: user.moodleId,
       avatarUrl: user.avatarUrl,
     },
     createdAt: new Date().toDateString(),
@@ -98,7 +100,7 @@ export default function BlogNewPostForm({ isEdit, post }) {
   const onSubmit = async (postData) => {
     console.log(postData);
     try {
-      await axios.post(isEdit ? '/edit-post' : '/create-post', postData);
+      await axios.post(isEdit ? '/edit-post' : '/create-post', { id: post._id['$oid'], ...postData });
       reset();
       handleClosePreview();
       enqueueSnackbar(isEdit ? 'Post updated successfully' : 'Created new post successfully!');

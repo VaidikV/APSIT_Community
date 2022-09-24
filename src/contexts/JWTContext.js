@@ -75,7 +75,6 @@ function AuthProvider({ children }) {
           setSession(accessToken);
 
           const response = await axios.get('/get-user');
-          console.log(response);
           const { user } = response.data;
 
           dispatch({
@@ -95,7 +94,6 @@ function AuthProvider({ children }) {
           });
         }
       } catch (err) {
-        console.error(err);
         dispatch({
           type: 'INITIALIZE',
           payload: {
@@ -112,7 +110,6 @@ function AuthProvider({ children }) {
   const login = async (userDetails) => {
     const response = await axios.post('/find-user', userDetails);
 
-    console.log(response);
     if (response.status === 200) {
       const { accessToken, user } = response.data;
 

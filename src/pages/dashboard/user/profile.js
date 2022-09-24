@@ -50,14 +50,9 @@ export default function UserProfile() {
   const { user } = useAuth();
 
   const [currentTab, setCurrentTab] = useState('profile');
-  const [findFriends, setFindFriends] = useState('');
 
   const handleChangeTab = (newValue) => {
     setCurrentTab(newValue);
-  };
-
-  const handleFindFriends = (value) => {
-    setFindFriends(value);
   };
 
   const PROFILE_TABS = [
