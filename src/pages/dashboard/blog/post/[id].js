@@ -19,7 +19,12 @@ import Markdown from '../../../../components/Markdown';
 import HeaderBreadcrumbs from '../../../../components/HeaderBreadcrumbs';
 import { SkeletonPost } from '../../../../components/skeleton';
 // sections
-import { BlogPostHero, BlogPostTags, BlogPostCommentForm } from '../../../../sections/@dashboard/blog';
+import {
+  BlogPostHero,
+  BlogPostTags,
+  BlogPostCommentForm,
+  BlogPostCommentList,
+} from '../../../../sections/@dashboard/blog';
 
 // ----------------------------------------------------------------------
 
@@ -109,15 +114,15 @@ export default function BlogPost() {
               <Box sx={{ display: 'flex', mb: 2 }}>
                 <Typography variant="h4">Comments</Typography>
                 <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
-                  ({post.comments.length})
+                  ({post.comments.length || 0})
                 </Typography>
               </Box>
 
               {/*<BlogPostCommentList post={post} />*/}
 
-              <Box sx={{ mb: 5, mt: 3, display: 'flex', justifyContent: 'flex-end' }}>
-                <Pagination count={8} color="primary" />
-              </Box>
+              {/*<Box sx={{ mb: 5, mt: 3, display: 'flex', justifyContent: 'flex-end' }}>*/}
+              {/*  <Pagination count={8} color="primary" />*/}
+              {/*</Box>*/}
 
               <BlogPostCommentForm />
             </Box>

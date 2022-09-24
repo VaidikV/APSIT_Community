@@ -9,7 +9,7 @@ import { PATH_DASHBOARD } from '../../../routes/paths';
 import useAuth from '../../../hooks/useAuth';
 import useSettings from '../../../hooks/useSettings';
 // _mock_
-import { _userAbout, _userFeeds, _userFriends, _userGallery, _userFollowers } from '../../../_mock';
+import { _userAbout, _userFeeds } from '../../../_mock';
 // layouts
 import Layout from '../../../layouts';
 // components
@@ -17,13 +17,7 @@ import Page from '../../../components/Page';
 import Iconify from '../../../components/Iconify';
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
 // sections
-import {
-  Profile,
-  ProfileCover,
-  ProfileFriends,
-  ProfileGallery,
-  ProfileFollowers,
-} from '../../../sections/@dashboard/user/profile';
+import { Profile, ProfileCover } from '../../../sections/@dashboard/user/profile';
 
 // ----------------------------------------------------------------------
 

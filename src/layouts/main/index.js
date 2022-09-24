@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 // next
 import { useRouter } from 'next/router';
 // @mui
-import { Box, Link, Container, Typography, Stack } from '@mui/material';
+import { Box, Container, Typography, Stack } from '@mui/material';
 // components
 import Logo from '../../components/Logo';
 //
@@ -33,7 +33,7 @@ export default function MainLayout({ children }) {
       ) : (
         <Box
           sx={{
-            py: 5,
+            py: 2,
             textAlign: 'center',
             position: 'relative',
             bgcolor: 'background.default',

@@ -49,6 +49,7 @@ export const PATH_DASHBOARD = {
     root: path(ROOTS_DASHBOARD, '/blog'),
     posts: path(ROOTS_DASHBOARD, '/blog/posts'),
     postById: path(ROOTS_DASHBOARD, '/blog/post/:id'),
+    editPost: path(ROOTS_DASHBOARD, '/blog/post/edit/:id'),
     newPost: path(ROOTS_DASHBOARD, '/blog/new-post'),
     trendingPosts: path(ROOTS_DASHBOARD, '/blog/post/trending-posts'),
     bookmarkedPost: path(ROOTS_DASHBOARD, '/blog/post/bookmarked-post/:user'),
