@@ -1,5 +1,5 @@
 import { capitalCase } from 'change-case';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // @mui
 import { styled } from '@mui/material/styles';
 import { Tab, Box, Card, Tabs, Container } from '@mui/material';
@@ -8,8 +8,7 @@ import { PATH_DASHBOARD } from '../../../routes/paths';
 // hooks
 import useAuth from '../../../hooks/useAuth';
 import useSettings from '../../../hooks/useSettings';
-// _mock_
-import { _userAbout, _userFeeds } from '../../../_mock';
+
 // layouts
 import Layout from '../../../layouts';
 // components
@@ -18,7 +17,8 @@ import Iconify from '../../../components/Iconify';
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
 // sections
 import { Profile, ProfileCover } from '../../../sections/@dashboard/user/profile';
-
+// util
+import axios from '../../../utils/axios';
 // ----------------------------------------------------------------------
 
 const TabsWrapperStyle = styled('div')(({ theme }) => ({
@@ -49,6 +49,22 @@ export default function UserProfile() {
   const { themeStretch } = useSettings();
   const { user } = useAuth();
 
+  const [userPosts, setUserPosts] = useState([]);
+
+  useEffect(() => {
+    async function callGetUserPosts() {
+      try {
+        const response = await axios.post('/user-post', {
+          moodleId: user.moodleId,
+        });
+        response.status === 200 ? setUserPosts(response.data.post) : new Error('An error has been occurred');
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    callGetUserPosts();
+  }, []);
+
   const [currentTab, setCurrentTab] = useState('profile');
 
   const handleChangeTab = (newValue) => {
@@ -59,7 +75,7 @@ export default function UserProfile() {
     {
       value: 'profile',
       icon: <Iconify icon={'ic:round-account-box'} width={20} height={20} />,
-      component: <Profile myProfile={_userAbout} posts={_userFeeds} />,
+      component: <Profile myProfile={user} posts={userPosts} />,
     },
   ];
 
@@ -81,7 +97,7 @@ export default function UserProfile() {
             position: 'relative',
           }}
         >
-          <ProfileCover myProfile={_userAbout} />
+          <ProfileCover myProfile={user} />
 
           <TabsWrapperStyle>
             <Tabs
