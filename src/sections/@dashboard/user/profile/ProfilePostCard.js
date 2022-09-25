@@ -214,7 +214,17 @@ function MoreMenuButton({ postId }) {
         })
         .then((response) => {
           if (response.status === 200) {
-            enqueueSnackbar('Commented on post');
+            enqueueSnackbar('Post deleted');
+          }
+          if (response.status === 201) {
+            enqueueSnackbar("Couldn't found the post.", {
+              variant: 'error',
+            });
+          }
+          if (response.status === 500) {
+            enqueueSnackbar('Sorry an error has been occurred.', {
+              variant: 'error',
+            });
           }
         });
     } catch (e) {

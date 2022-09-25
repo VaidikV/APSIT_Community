@@ -24,6 +24,7 @@ export const PATH_PAGE = {
   contact: '/contact-us',
   faqs: '/faqs',
   page404: '/404',
+  page401: '/401',
   page500: '/500',
 };
 

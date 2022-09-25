@@ -100,7 +100,7 @@ export default function BlogNewPostForm({ isEdit, post }) {
   const onSubmit = async (postData) => {
     console.log(postData);
     try {
-      await axios.post(isEdit ? '/edit-post' : '/create-post', { id: post._id['$oid'], ...postData });
+      await axios.post(isEdit ? '/edit-post' : '/create-post', { id: post?._id['$oid'], ...postData });
       reset();
       handleClosePreview();
       enqueueSnackbar(isEdit ? 'Post updated successfully' : 'Created new post successfully!');
