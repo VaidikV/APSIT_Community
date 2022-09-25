@@ -46,9 +46,7 @@ ProfileCover.propTypes = {
 };
 
 export default function ProfileCover({ myProfile }) {
-  const { user } = useAuth();
-
-  const { position, cover } = myProfile;
+  const { displayName, year, branch, cover } = myProfile;
 
   return (
     <RootStyle>
@@ -71,11 +69,18 @@ export default function ProfileCover({ myProfile }) {
             textAlign: { xs: 'center', md: 'left' },
           }}
         >
-          <Typography variant="h4">{user?.displayName}</Typography>
-          <Typography sx={{ opacity: 0.72 }}>{position}</Typography>
+          <Typography variant="h4">{displayName}</Typography>
+          <Typography sx={{ opacity: 0.72 }}>{year + ' ' + branch} Student</Typography>
         </Box>
       </InfoStyle>
-      <Image alt="profile cover" src={cover} sx={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
+      <Image
+        alt="profile cover"
+        src={
+          cover ||
+          'https://images.unsplash.com/photo-1625139107083-43dd2344243b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80'
+        }
+        sx={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
+      />
     </RootStyle>
   );
 }

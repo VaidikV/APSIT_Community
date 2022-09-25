@@ -13,6 +13,7 @@ import useAuth from '../../../../hooks/useAuth';
 import { fData } from '../../../../utils/formatNumber';
 // components
 import { FormProvider, RHFSwitch, RHFSelect, RHFTextField, RHFUploadAvatar } from '../../../../components/hook-form';
+import axios from '../../../../utils/axios';
 
 // ----------------------------------------------------------------------
 
@@ -20,6 +21,8 @@ export default function AccountGeneral() {
   const { enqueueSnackbar } = useSnackbar();
 
   const { user } = useAuth();
+
+  console.log(user);
 
   const UpdateUserSchema = Yup.object().shape({
     firstName: Yup.string().required('First name required'),
@@ -34,22 +37,24 @@ export default function AccountGeneral() {
       .required('Roll number is required')
       .matches(/^[0-9]+$/, 'Only numbers are allowed')
       .max(3, 'Must be less than 4 digit'),
+    avatarUrl: Yup.string,
     isPublic: Yup.bool,
     email: Yup.string().email('Email must be a valid email address').required('Email is required'),
     about: Yup.string(),
   });
 
   const defaultValues = {
-    firstName: user?.firstName || '',
-    lastName: user?.lastName || '',
-    year: user?.year || '',
-    branch: user?.branch || '',
-    div: user?.div || '',
-    rollNumber: user?.rollNumber || '',
-    isPublic: user?.isPublic || true,
-    email: user?.email || '',
-    avatarUrl: user?.avatarUrl || '',
-    abort: user?.about || '',
+    moodleId: user.moodleId,
+    firstName: user.firstName || '',
+    lastName: user.lastName || '',
+    year: user.year || '',
+    branch: user.branch || '',
+    div: user.div || '',
+    rollNumber: user.rollNumber || '',
+    isPublic: user.isPublic || '',
+    email: user.email || '',
+    avatarUrl: user.avatarUrl || '',
+    about: user.about || '',
   };
 
   const methods = useForm({
@@ -58,18 +63,31 @@ export default function AccountGeneral() {
   });
 
   const {
+    reset,
+    watch,
     setValue,
     handleSubmit,
     formState: { isSubmitting },
   } = methods;
 
-  const onSubmit = async (data) => {
+  const values = watch();
+
+  const onSubmit = async (profileData) => {
     try {
-      console.log(data);
-      // await new Promise((resolve) => setTimeout(resolve, 500));
-      enqueueSnackbar('Update success!');
+      // profileData is not working its returning empty object. That's why we are using values
+      console.log(values);
+      // await axios.post('/update-user', {
+      //   ...values,
+      //   displayName: values.firstName + ' ' + values.lastName,
+      //   avatarUrl: user.avatarUrl.preview,
+      // });
+      reset();
+      enqueueSnackbar('Updated profile successfully!');
     } catch (error) {
       console.error(error);
+      enqueueSnackbar('Error has occurred. Please try again', {
+        variant: 'error',
+      });
     }
   };
 
@@ -81,7 +99,7 @@ export default function AccountGeneral() {
       reader.onload = function (e) {
         if (file) {
           setValue(
-            'photoURL',
+            'avatarUrl',
             Object.assign(file, {
               preview: e.target.result,
             })
@@ -99,7 +117,7 @@ export default function AccountGeneral() {
         <Grid item xs={12} md={4}>
           <Card sx={{ py: 10, px: 3, textAlign: 'center' }}>
             <RHFUploadAvatar
-              name="photoURL"
+              name="avatarUrl"
               accept="image/*"
               maxSize={3145728}
               onDrop={handleDrop}

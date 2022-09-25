@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 // @mui
-import { Grid, Stack } from '@mui/material';
+import { Grid, Stack, Typography } from '@mui/material';
 //
 import ProfileAbout from './ProfileAbout';
 import ProfilePostCard from './ProfilePostCard';
@@ -29,9 +29,11 @@ export default function Profile({ myProfile, posts }) {
       <Grid item xs={12} md={8}>
         <Stack spacing={3}>
           <ProfilePostInput />
-          {posts.map((post) => (
-            <ProfilePostCard key={post.id} post={post} />
-          ))}
+          {posts.length ? (
+            posts.map((post) => <ProfilePostCard key={post.id} post={post} />)
+          ) : (
+            <Typography variant={'body1'}>No posts found!</Typography>
+          )}
         </Stack>
       </Grid>
     </Grid>
