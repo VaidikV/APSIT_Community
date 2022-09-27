@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 // @mui
-import { Grid, Stack, Typography } from '@mui/material';
+import { Box, CircularProgress, Grid, Stack, Typography } from '@mui/material';
 //
 import ProfileAbout from './ProfileAbout';
 import ProfilePostCard from './ProfilePostCard';
@@ -13,9 +13,10 @@ import ProfileSocialInfo from './ProfileSocialInfo';
 Profile.propTypes = {
   myProfile: PropTypes.object,
   posts: PropTypes.array,
+  loading: PropTypes.bool,
 };
 
-export default function Profile({ myProfile, posts }) {
+export default function Profile({ myProfile, posts, loading }) {
   return (
     <Grid container spacing={3}>
       <Grid item xs={12} md={4}>
@@ -29,11 +30,9 @@ export default function Profile({ myProfile, posts }) {
       <Grid item xs={12} md={8}>
         <Stack spacing={3}>
           <ProfilePostInput />
-          {posts.length ? (
-            posts.map((post) => <ProfilePostCard key={post.id} post={post} />)
-          ) : (
-            <Typography variant={'body1'}>No posts found!</Typography>
-          )}
+          {loading && <CircularProgress />}
+          {posts && !loading && posts.map((post) => <ProfilePostCard key={post._id['$oid']} post={post} />)}
+          {!loading && !posts.length && <Typography variant={'body1'}>No posts found!</Typography>}
         </Stack>
       </Grid>
     </Grid>
