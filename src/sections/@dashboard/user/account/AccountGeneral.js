@@ -22,8 +22,6 @@ export default function AccountGeneral() {
 
   const { user } = useAuth();
 
-  console.log(user);
-
   const UpdateUserSchema = Yup.object().shape({
     firstName: Yup.string().required('First name required'),
     lastName: Yup.string().required('Last name required'),
@@ -45,16 +43,16 @@ export default function AccountGeneral() {
 
   const defaultValues = {
     moodleId: user.moodleId,
-    firstName: user.firstName || '',
-    lastName: user.lastName || '',
-    year: user.year || '',
-    branch: user.branch || '',
-    div: user.div || '',
-    rollNumber: user.rollNumber || '',
-    isPublic: user.isPublic || '',
-    email: user.email || '',
-    avatarUrl: user.avatarUrl || '',
-    about: user.about || '',
+    firstName: user.firstName,
+    lastName: user.lastName,
+    year: user.year,
+    branch: user.branch,
+    div: user.div,
+    rollNumber: user.rollNumber,
+    isPublic: user.isPublic,
+    email: user.email,
+    avatarUrl: user.avatarUrl,
+    about: user.about,
   };
 
   const methods = useForm({
@@ -63,25 +61,22 @@ export default function AccountGeneral() {
   });
 
   const {
-    reset,
     watch,
     setValue,
     handleSubmit,
     formState: { isSubmitting },
   } = methods;
 
-  const values = watch();
-
-  const onSubmit = async (profileData) => {
+  const onSubmit = async () => {
     try {
       // profileData is not working its returning empty object. That's why we are using values
+      const values = watch();
       console.log(values);
-      // await axios.post('/update-user', {
-      //   ...values,
-      //   displayName: values.firstName + ' ' + values.lastName,
-      //   avatarUrl: user.avatarUrl.preview,
-      // });
-      reset();
+      await axios.post('/update-user', {
+        ...values,
+        displayName: values.firstName + ' ' + values.lastName,
+        avatarUrl: user.avatarUrl.preview,
+      });
       enqueueSnackbar('Updated profile successfully!');
     } catch (error) {
       console.error(error);
