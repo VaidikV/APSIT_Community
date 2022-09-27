@@ -75,7 +75,7 @@ export default function AccountGeneral() {
       await axios.post('/update-user', {
         ...values,
         displayName: values.firstName + ' ' + values.lastName,
-        avatarUrl: user.avatarUrl.preview,
+        avatarUrl: values.avatarUrl.preview,
       });
       enqueueSnackbar('Updated profile successfully!');
     } catch (error) {
