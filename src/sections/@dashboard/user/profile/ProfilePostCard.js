@@ -18,6 +18,12 @@ import {
   FormControlLabel,
   MenuItem,
   Divider,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
 } from '@mui/material';
 // hooks
 import useAuth from '../../../../hooks/useAuth';
@@ -51,7 +57,7 @@ export default function ProfilePostCard({ post }) {
 
   const [isLiked, setLiked] = useState(post.isLiked);
 
-  const [likes, setLikes] = useState(post.personLikes.length);
+  const [likes, setLikes] = useState(post.personLikes?.length);
 
   const [message, setMessage] = useState('');
 
@@ -94,13 +100,13 @@ export default function ProfilePostCard({ post }) {
             {fDate(post.createdAt)}
           </Typography>
         }
-        action={<MoreMenuButton postId={post.id} />}
+        action={<MoreMenuButton postId={post._id['$oid']} />}
       />
 
       <Stack spacing={3} sx={{ p: 3 }}>
         <Typography>{post.message}</Typography>
 
-        <Image alt="post media" src={post.media} ratio="16/9" sx={{ borderRadius: 1 }} />
+        <Image alt="post media" src={post.cover?.preview} ratio="16/9" sx={{ borderRadius: 1 }} />
 
         <Stack direction="row" alignItems="center">
           <FormControlLabel
@@ -118,7 +124,7 @@ export default function ProfilePostCard({ post }) {
             sx={{ minWidth: 72, mr: 0 }}
           />
           <AvatarGroup max={4} sx={{ '& .MuiAvatar-root': { width: 32, height: 32 } }}>
-            {post.personLikes.map((person) => (
+            {post.personLikes?.map((person) => (
               <Avatar key={person.name} alt={person.name} src={person.avatarUrl} />
             ))}
           </AvatarGroup>
@@ -203,7 +209,7 @@ MoreMenuButton.propTypes = {
 function MoreMenuButton({ postId }) {
   const [open, setOpen] = useState(null);
   const { enqueueSnackbar } = useSnackbar();
-  const { push } = useRouter();
+  const { push, reload } = useRouter();
   const linkTo = `${PATH_DASHBOARD.blog.root}/post/edit/${postId}`;
   // --------------------------------------------------------------------------
   const postDeleteHandler = async () => {
@@ -215,6 +221,7 @@ function MoreMenuButton({ postId }) {
         .then((response) => {
           if (response.status === 200) {
             enqueueSnackbar('Post deleted');
+            reload();
           }
           if (response.status === 201) {
             enqueueSnackbar("Couldn't found the post.", {
@@ -278,11 +285,62 @@ function MoreMenuButton({ postId }) {
 
         <Divider sx={{ borderStyle: 'dashed' }} />
 
-        <MenuItem sx={{ color: 'error.main' }} onClick={postDeleteHandler}>
-          <Iconify icon={'eva:trash-2-outline'} sx={{ ...ICON }} />
-          Delete
-        </MenuItem>
+        <FormDialogs postDeleteHandler={postDeleteHandler} />
       </MenuPopover>
     </>
+  );
+}
+
+// ----------------------------------------------------------------------
+
+FormDialogs.propTypes = {
+  postDeleteHandler: PropTypes.func,
+};
+
+function FormDialogs({ postDeleteHandler }) {
+  const [open, setOpen] = useState(false);
+  const ICON = {
+    mr: 2,
+    width: 20,
+    height: 20,
+  };
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const deletePost = () => {
+    postDeleteHandler();
+    setOpen(false);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <div>
+      <MenuItem sx={{ color: 'error.main' }} onClick={handleClickOpen}>
+        <Iconify icon={'eva:trash-2-outline'} sx={{ ...ICON }} />
+        Delete
+      </MenuItem>
+
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Delete post</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Are you sure you want to delete this post?
+            <br /> Action cannot be reverted.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="inherit">
+            Cancel
+          </Button>
+          <Button onClick={deletePost} variant="contained">
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
   );
 }

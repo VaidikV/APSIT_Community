@@ -50,18 +50,25 @@ export default function UserProfile() {
   const { user } = useAuth();
 
   const [userPosts, setUserPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
+
     async function callGetUserPosts() {
       try {
         const response = await axios.post('/user-post', {
           moodleId: user.moodleId,
         });
+        console.log(response);
         response.status === 200 ? setUserPosts(response.data.post) : new Error('An error has been occurred');
+        setLoading(false);
       } catch (e) {
         console.error(e);
+        setLoading(false);
       }
     }
+
     callGetUserPosts();
   }, []);
 
@@ -75,12 +82,12 @@ export default function UserProfile() {
     {
       value: 'profile',
       icon: <Iconify icon={'ic:round-account-box'} width={20} height={20} />,
-      component: <Profile myProfile={user} posts={userPosts} />,
+      component: <Profile myProfile={user} posts={userPosts} loading={loading} />,
     },
   ];
 
   return (
-    <Page title="User: Profile">
+    <Page title={`${user.displayName} : Profile`}>
       <Container maxWidth={themeStretch ? false : 'lg'}>
         <HeaderBreadcrumbs
           heading="Profile"

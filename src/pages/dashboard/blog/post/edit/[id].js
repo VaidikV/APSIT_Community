@@ -38,22 +38,20 @@ export default function EditPost() {
         params: { id },
       })
       .then((response) => {
-        if (response.status === 200) {
-          setPost(response.data.post);
-        }
-
-        if (post?.author.moodleId !== user.moodleId) {
-          push(PATH_PAGE.page401);
-        }
-
-        if (response.data.post.length === 0) {
-          setError('No post found');
+        const post = response.data.post;
+        if (post) {
+          if (post.author.moodleId !== user.moodleId) {
+            push(PATH_PAGE.page401);
+          }
+          setPost(post);
+        } else {
+          new Error('Cannot find post');
         }
       })
       .catch((error) => {
-        setError("The requested post doesn't exist");
+        setError(error.message);
       });
-  }, []);
+  }, [id]);
 
   return (
     <Page title="Blog: Post Edit">
