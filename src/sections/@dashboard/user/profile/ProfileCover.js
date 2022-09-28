@@ -4,8 +4,7 @@ import { styled } from '@mui/material/styles';
 import { Box, Typography } from '@mui/material';
 // utils
 import cssStyles from '../../../../utils/cssStyles';
-// hooks
-import useAuth from '../../../../hooks/useAuth';
+
 // components
 import MyAvatar from '../../../../components/MyAvatar';
 import Image from '../../../../components/Image';
@@ -46,7 +45,7 @@ ProfileCover.propTypes = {
 };
 
 export default function ProfileCover({ myProfile }) {
-  const { displayName, year, branch, cover } = myProfile;
+  const { displayName, year, branch } = myProfile;
 
   return (
     <RootStyle>
@@ -76,7 +75,6 @@ export default function ProfileCover({ myProfile }) {
       <Image
         alt="profile cover"
         src={
-          cover ||
           'https://images.unsplash.com/photo-1625139107083-43dd2344243b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80'
         }
         sx={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}

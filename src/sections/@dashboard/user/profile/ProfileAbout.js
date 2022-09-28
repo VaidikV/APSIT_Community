@@ -22,46 +22,81 @@ ProfileAbout.propTypes = {
 };
 
 export default function ProfileAbout({ profile }) {
-  const { quote, country, email, role, company, school } = profile;
+  const { displayName, year, branch, div, rollNumber, moodleId, email, about } = profile;
 
   return (
     <Card>
       <CardHeader title="About" />
 
       <Stack spacing={2} sx={{ p: 3 }}>
-        <Typography variant="body2">{quote}</Typography>
+        <Typography variant="body2">{about || 'Kar kuchh aisa, Duniya banana chahe tere jaisa'}</Typography>
 
         <Stack direction="row">
-          <IconStyle icon={'eva:pin-fill'} />
+          <IconStyle icon="ic:twotone-drive-file-rename-outline" />
           <Typography variant="body2">
-            Live at &nbsp;
+            Name &nbsp;
             <Link component="span" variant="subtitle2" color="text.primary">
-              {country}
+              {displayName}
+            </Link>
+          </Typography>
+        </Stack>
+
+        <Stack direction="row">
+          <IconStyle icon="icon-park-twotone:branch" />
+          <Typography variant="body2">
+            Branch &nbsp;
+            <Link component="span" variant="subtitle2" color="text.primary">
+              {branch}
+            </Link>
+          </Typography>
+        </Stack>
+
+        <Stack direction="row">
+          <IconStyle icon="icon-park-twotone:branch-one" />
+          <Typography variant="body2">
+            Div &nbsp;
+            <Link component="span" variant="subtitle2" color="text.primary">
+              {div}
+            </Link>
+          </Typography>
+        </Stack>
+
+        <Stack direction="row">
+          <IconStyle icon="ic:twotone-numbers" />
+          <Typography variant="body2">
+            Roll no. &nbsp;
+            <Link component="span" variant="subtitle2" color="text.primary">
+              {rollNumber}
+            </Link>
+          </Typography>
+        </Stack>
+
+        <Stack direction="row">
+          <IconStyle icon="carbon:increase-level" />
+          <Typography variant="body2">
+            Year &nbsp;
+            <Link component="span" variant="subtitle2" color="text.primary">
+              {year}
+            </Link>
+          </Typography>
+        </Stack>
+
+        <Stack direction="row">
+          <IconStyle icon="icon-park-twotone:id-card" />
+          <Typography variant="body2">
+            MoodleID &nbsp;
+            <Link component="span" variant="subtitle2" color="text.primary">
+              {moodleId}
             </Link>
           </Typography>
         </Stack>
 
         <Stack direction="row">
           <IconStyle icon={'eva:email-fill'} />
-          <Typography variant="body2">{email}</Typography>
-        </Stack>
-
-        <Stack direction="row">
-          <IconStyle icon={'ic:round-business-center'} />
           <Typography variant="body2">
-            {role} at &nbsp;
+            Email &nbsp;
             <Link component="span" variant="subtitle2" color="text.primary">
-              {company}
-            </Link>
-          </Typography>
-        </Stack>
-
-        <Stack direction="row">
-          <IconStyle icon={'ic:round-business-center'} />
-          <Typography variant="body2">
-            Studied at &nbsp;
-            <Link component="span" variant="subtitle2" color="text.primary">
-              {school}
+              {email}
             </Link>
           </Typography>
         </Stack>
