@@ -22,7 +22,6 @@ GeneralApp.getLayout = function getLayout(page) {
 
 export default function GeneralApp() {
   const { user } = useAuth();
-  const theme = useTheme();
   const { themeStretch } = useSettings();
 
   return (
@@ -32,10 +31,6 @@ export default function GeneralApp() {
           <Grid item xs={12}>
             <AppWelcome displayName={user?.displayName} />
           </Grid>
-
-          {/*<Grid item xs={12} md={4}>*/}
-          {/*  <AppFeatured />*/}
-          {/*</Grid>*/}
           <Grid item xs={12}>
             <BlogPosts />
           </Grid>

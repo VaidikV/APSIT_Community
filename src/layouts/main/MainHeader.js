@@ -1,11 +1,8 @@
-// next
-import { useRouter } from 'next/router';
 // @mui
 import { styled, useTheme } from '@mui/material/styles';
-import { Box, Button, AppBar, Toolbar, Container } from '@mui/material';
+import { Box, AppBar, Toolbar, Container } from '@mui/material';
 // hooks
 import useOffSetTop from '../../hooks/useOffSetTop';
-import useResponsive from '../../hooks/useResponsive';
 // utils
 import cssStyles from '../../utils/cssStyles';
 // config
@@ -13,10 +10,6 @@ import { HEADER } from '../../config';
 // components
 import Logo from '../../components/Logo';
 import Label from '../../components/Label';
-//
-import MenuDesktop from './MenuDesktop';
-import MenuMobile from './MenuMobile';
-import navConfig from './MenuConfig';
 
 // ----------------------------------------------------------------------
 
@@ -51,7 +44,6 @@ export default function MainHeader() {
 
   const theme = useTheme();
 
-
   return (
     <AppBar sx={{ boxShadow: 0, bgcolor: 'transparent' }}>
       <ToolbarStyle
@@ -76,8 +68,6 @@ export default function MainHeader() {
             v1.0.0
           </Label>
           <Box sx={{ flexGrow: 1 }} />
-
-
         </Container>
       </ToolbarStyle>
 

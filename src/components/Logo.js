@@ -4,15 +4,14 @@ import NextLink from 'next/link';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Box } from '@mui/material';
-import Image from 'next/image';
+import { PATH_DASHBOARD } from '../routes/paths';
 
 // ----------------------------------------------------------------------
 
 const Logo = forwardRef(({ disabledLink = false, sx }, ref) => {
   const theme = useTheme();
-  const PRIMARY_LIGHT = theme.palette.primary.light;
+
   const PRIMARY_MAIN = theme.palette.primary.main;
-  const PRIMARY_DARK = theme.palette.primary.dark;
 
   const logo = (
     <Box ref={ref} sx={{ width: 80, height: 80, cursor: 'pointer', ...sx }}>
@@ -159,7 +158,7 @@ const Logo = forwardRef(({ disabledLink = false, sx }, ref) => {
     return <>{logo}</>;
   }
 
-  return <NextLink href="/">{logo}</NextLink>;
+  return <NextLink href={PATH_DASHBOARD.root}>{logo}</NextLink>;
 });
 
 Logo.propTypes = {

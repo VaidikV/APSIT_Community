@@ -4,7 +4,7 @@ import { m } from 'framer-motion';
 import { useState, useRef } from 'react';
 // @mui
 import { alpha, useTheme } from '@mui/material/styles';
-import { Box, Card, Paper, Typography, CardContent } from '@mui/material';
+import { Box, Card, Paper, Typography, CardContent, useMediaQuery } from '@mui/material';
 // _mock_
 import { _carouselsExample } from '../../../../_mock';
 // components
@@ -70,7 +70,7 @@ CarouselItem.propTypes = {
 function CarouselItem({ item, isActive }) {
   const theme = useTheme();
   const { image, title } = item;
-
+  const isLarge = useMediaQuery(theme.breakpoints.up('sm'));
   return (
     <Paper sx={{ position: 'relative' }}>
       <Image alt={title} src={image} ratio="16/9" />
@@ -104,11 +104,13 @@ function CarouselItem({ item, isActive }) {
             {item.title}
           </Typography>
         </m.div>
-        <m.div variants={varFade().inRight}>
-          <Typography variant="body2" gutterBottom>
-            {item.description}
-          </Typography>
-        </m.div>
+        {isLarge && (
+          <m.div variants={varFade().inRight}>
+            <Typography variant="body2" gutterBottom>
+              {item.description}
+            </Typography>
+          </m.div>
+        )}
       </CardContent>
     </Paper>
   );

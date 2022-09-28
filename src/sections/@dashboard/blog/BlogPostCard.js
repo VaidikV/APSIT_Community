@@ -59,16 +59,20 @@ export default function BlogPostCard({ post, index }) {
             position: 'absolute',
           }}
         />
+
         <PostContent
           title={title}
           id={_id['$oid']}
+          name={author?.name}
           view={view}
           comment={comment}
           share={share}
           createdAt={createdAt}
           index={index}
         />
+
         <OverlayStyle />
+
         <Image alt="cover" src={cover?.preview} sx={{ height: 360 }} />
       </Card>
     );
@@ -88,22 +92,17 @@ export default function BlogPostCard({ post, index }) {
             color: 'background.paper',
           }}
         />
-        <Avatar
-          alt={author?.name}
-          src={author?.avatarUrl}
-          sx={{
-            left: 24,
-            zIndex: 9,
-            width: 32,
-            height: 32,
-            bottom: -16,
-            position: 'absolute',
-          }}
-        />
-        <Image alt="cover" src={cover?.preview} ratio="4/3" />
       </Box>
 
-      <PostContent title={title} id={_id['$oid']} view={view} comment={comment} share={share} createdAt={createdAt} />
+      <PostContent
+        title={title}
+        id={_id['$oid']}
+        name={author?.name}
+        view={view}
+        comment={comment}
+        share={share}
+        createdAt={createdAt}
+      />
     </Card>
   );
 }
@@ -114,13 +113,14 @@ PostContent.propTypes = {
   comment: PropTypes.number,
   createdAt: PropTypes.string,
   index: PropTypes.number,
+  name: PropTypes.string,
   share: PropTypes.number,
   id: PropTypes.any,
   title: PropTypes.string,
   view: PropTypes.number,
 };
 
-export function PostContent({ title, id, view, comment, share, createdAt, index }) {
+export function PostContent({ title, id, name, view, comment, share, createdAt, index }) {
   const isDesktop = useResponsive('up', 'md');
 
   const linkTo = `${PATH_DASHBOARD.blog.root}/post/${id}`;
@@ -148,6 +148,7 @@ export function PostContent({ title, id, view, comment, share, createdAt, index 
         }),
       }}
     >
+      <Typography>{name}</Typography>
       <Typography
         gutterBottom
         variant="caption"

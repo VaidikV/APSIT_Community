@@ -21,15 +21,13 @@ export default function Profile({ myProfile, posts, loading }) {
     <Grid container spacing={3}>
       <Grid item xs={12} md={4}>
         <Stack spacing={3}>
-          <ProfileFollowInfo profile={myProfile} />
           <ProfileAbout profile={myProfile} />
-          <ProfileSocialInfo profile={myProfile} />
         </Stack>
       </Grid>
 
       <Grid item xs={12} md={8}>
         <Stack spacing={3}>
-          <ProfilePostInput />
+          <Typography>My Posts</Typography>
           {loading && <CircularProgress />}
           {posts && !loading && posts.map((post) => <ProfilePostCard key={post._id['$oid']} post={post} />)}
           {!loading && !posts.length && <Typography variant={'body1'}>No posts found!</Typography>}
