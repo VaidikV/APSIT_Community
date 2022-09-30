@@ -62,6 +62,7 @@ export default function BlogNewPostForm({ isEdit, post }) {
     view: 0,
     comment: 0,
     share: 0,
+    like: 0,
     author: {
       name: user.displayName,
       moodleId: user.moodleId,

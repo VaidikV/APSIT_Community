@@ -8,6 +8,7 @@ import { Typography, Stack } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 // components
 import { FormProvider, RHFTextField } from '../../../components/hook-form';
+import PropTypes from 'prop-types';
 
 // ----------------------------------------------------------------------
 
@@ -19,15 +20,17 @@ const RootStyles = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function BlogPostCommentForm() {
+BlogPostCommentForm.propType = {
+  onComment: PropTypes.func,
+};
+
+export default function BlogPostCommentForm({ onComment }) {
   const CommentSchema = Yup.object().shape({
     comment: Yup.string().required('Comment is required'),
   });
 
   const defaultValues = {
     comment: '',
-    name: '',
-    email: '',
   };
 
   const methods = useForm({
@@ -41,13 +44,15 @@ export default function BlogPostCommentForm() {
     formState: { isSubmitting },
   } = methods;
 
-  const onSubmit = async () => {
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      reset();
-    } catch (error) {
-      console.error(error);
-    }
+  const onSubmit = async (data) => {
+    console.log(data);
+    onComment(data);
+    // try {
+    //   await new Promise((resolve) => setTimeout(resolve, 500));
+    //   reset();
+    // } catch (error) {
+    //   console.error(error);
+    // }
   };
 
   return (

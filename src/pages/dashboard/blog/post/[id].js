@@ -46,14 +46,14 @@ export default function BlogPost() {
   const [post, setPost] = useState(null);
 
   const [error, setError] = useState(null);
-
+  const [comment, setComment] = useState(['Hi']);
+  console.log(post);
   const getPost = useCallback(async () => {
     try {
       const response = await axios.get('/post', {
         params: { id },
       });
 
-      console.log(response.data.post);
       if (isMountedRef.current) {
         setPost(response.data.post);
       }
@@ -81,6 +81,10 @@ export default function BlogPost() {
     getPost();
     // getRecentPosts();
   }, [getPost]);
+
+  const onComment = (value) => {
+    setComment((prevState) => [...prevState, value.comment]);
+  };
 
   return (
     <Page title="Blog: Post Details">
@@ -114,17 +118,22 @@ export default function BlogPost() {
               <Box sx={{ display: 'flex', mb: 2 }}>
                 <Typography variant="h4">Comments</Typography>
                 <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
-                  ({post.comments.length || 0})
+                  ({comment.length || 0})
                 </Typography>
               </Box>
 
               {/*<BlogPostCommentList post={post} />*/}
+              {comment.map((comment, index) => (
+                <Typography key={index} mb={2}>
+                  {comment}
+                </Typography>
+              ))}
 
               {/*<Box sx={{ mb: 5, mt: 3, display: 'flex', justifyContent: 'flex-end' }}>*/}
               {/*  <Pagination count={8} color="primary" />*/}
               {/*</Box>*/}
 
-              <BlogPostCommentForm />
+              <BlogPostCommentForm onComment={onComment} />
             </Box>
           </Card>
         )}
@@ -132,8 +141,6 @@ export default function BlogPost() {
         {!post && !error && <SkeletonPost />}
 
         {error && <Typography variant="h6">404 {error}!</Typography>}
-
-        {/*<BlogPostRecent posts={recentPosts} />*/}
       </Container>
     </Page>
   );

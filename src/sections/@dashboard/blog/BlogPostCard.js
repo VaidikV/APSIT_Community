@@ -1,34 +1,18 @@
 import PropTypes from 'prop-types';
-import { paramCase } from 'change-case';
 // next
 import NextLink from 'next/link';
 // @mui
-import { alpha, styled } from '@mui/material/styles';
-import { Box, Card, Avatar, Typography, CardContent, Link, Stack } from '@mui/material';
+import { Box, Card, Typography, CardContent, Link, Stack } from '@mui/material';
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
-// hooks
-import useResponsive from '../../../hooks/useResponsive';
 // utils
 import { fDate } from '../../../utils/formatTime';
 import { fShortenNumber } from '../../../utils/formatNumber';
 // components
-import Image from '../../../components/Image';
 import Iconify from '../../../components/Iconify';
 import TextMaxLine from '../../../components/TextMaxLine';
 import SvgIconStyle from '../../../components/SvgIconStyle';
 import TextIconLabel from '../../../components/TextIconLabel';
-
-// ----------------------------------------------------------------------
-
-const OverlayStyle = styled('div')(({ theme }) => ({
-  top: 0,
-  zIndex: 1,
-  width: '100%',
-  height: '100%',
-  position: 'absolute',
-  backgroundColor: alpha(theme.palette.grey[900], 0.8),
-}));
 
 // ----------------------------------------------------------------------
 
@@ -38,45 +22,7 @@ BlogPostCard.propTypes = {
 };
 
 export default function BlogPostCard({ post, index }) {
-  const isDesktop = useResponsive('up', 'md');
-
-  const { cover, title, _id, view, comment, share, author, createdAt } = post;
-
-  const latestPost = index === 0 || index === 1 || index === 2;
-
-  if (isDesktop && latestPost) {
-    return (
-      <Card>
-        <Avatar
-          alt={author?.name}
-          src={author?.avatarUrl}
-          sx={{
-            zIndex: 9,
-            top: 24,
-            left: 24,
-            width: 40,
-            height: 40,
-            position: 'absolute',
-          }}
-        />
-
-        <PostContent
-          title={title}
-          id={_id['$oid']}
-          name={author?.name}
-          view={view}
-          comment={comment}
-          share={share}
-          createdAt={createdAt}
-          index={index}
-        />
-
-        <OverlayStyle />
-
-        <Image alt="cover" src={cover?.preview} sx={{ height: 360 }} />
-      </Card>
-    );
-  }
+  const { title, _id, view, comment, share, author, createdAt } = post;
 
   return (
     <Card>
@@ -121,13 +67,7 @@ PostContent.propTypes = {
 };
 
 export function PostContent({ title, id, name, view, comment, share, createdAt, index }) {
-  const isDesktop = useResponsive('up', 'md');
-
   const linkTo = `${PATH_DASHBOARD.blog.root}/post/${id}`;
-
-  const latestPostLarge = index === 0;
-  const latestPostSmall = index === 1 || index === 2;
-
   const POST_INFO = [
     { number: comment, icon: 'eva:message-circle-fill' },
     { number: view, icon: 'eva:eye-fill' },
@@ -139,13 +79,6 @@ export function PostContent({ title, id, name, view, comment, share, createdAt, 
       sx={{
         pt: 4.5,
         width: 1,
-        ...((latestPostLarge || latestPostSmall) && {
-          pt: 0,
-          zIndex: 9,
-          bottom: 0,
-          position: 'absolute',
-          color: 'common.white',
-        }),
       }}
     >
       <Typography>{name}</Typography>
@@ -155,10 +88,6 @@ export function PostContent({ title, id, name, view, comment, share, createdAt, 
         component="div"
         sx={{
           color: 'text.disabled',
-          ...((latestPostLarge || latestPostSmall) && {
-            opacity: 0.64,
-            color: 'common.white',
-          }),
         }}
       >
         {fDate(createdAt ? createdAt : new Date())}
@@ -166,7 +95,7 @@ export function PostContent({ title, id, name, view, comment, share, createdAt, 
 
       <NextLink href={linkTo} passHref>
         <Link color="inherit">
-          <TextMaxLine variant={isDesktop && latestPostLarge ? 'h5' : 'subtitle2'} line={2} persistent>
+          <TextMaxLine variant={'subtitle2'} line={2} persistent>
             {title}
           </TextMaxLine>
         </Link>
@@ -179,10 +108,6 @@ export function PostContent({ title, id, name, view, comment, share, createdAt, 
         sx={{
           mt: 3,
           color: 'text.disabled',
-          ...((latestPostLarge || latestPostSmall) && {
-            opacity: 0.64,
-            color: 'common.white',
-          }),
         }}
       >
         {POST_INFO.map((info, index) => (
