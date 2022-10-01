@@ -50,7 +50,6 @@ ProfilePostCard.propTypes = {
 
 export default function ProfilePostCard({ post }) {
   const { user } = useAuth();
-
   const commentInputRef = useRef(null);
 
   const fileInputRef = useRef(null);

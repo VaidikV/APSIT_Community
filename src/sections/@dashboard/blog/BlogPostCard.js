@@ -90,7 +90,7 @@ export function PostContent({ title, id, name, view, comment, share, createdAt, 
           color: 'text.disabled',
         }}
       >
-        {fDate(createdAt ? createdAt : new Date())}
+        {fDate(createdAt)}
       </Typography>
 
       <NextLink href={linkTo} passHref>
