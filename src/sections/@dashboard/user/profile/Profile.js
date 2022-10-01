@@ -4,9 +4,6 @@ import { Box, CircularProgress, Grid, Stack, Typography } from '@mui/material';
 //
 import ProfileAbout from './ProfileAbout';
 import ProfilePostCard from './ProfilePostCard';
-import ProfilePostInput from './ProfilePostInput';
-import ProfileFollowInfo from './ProfileFollowInfo';
-import ProfileSocialInfo from './ProfileSocialInfo';
 
 // ----------------------------------------------------------------------
 

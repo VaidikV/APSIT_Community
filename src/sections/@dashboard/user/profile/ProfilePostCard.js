@@ -61,7 +61,7 @@ export default function ProfilePostCard({ post }) {
 
   const [message, setMessage] = useState('');
 
-  const hasComments = post.comments.length > 0;
+  const hasComments = post.comment.length > 0;
 
   const handleLike = () => {
     setLiked(true);
@@ -139,9 +139,9 @@ export default function ProfilePostCard({ post }) {
 
         {hasComments && (
           <Stack spacing={1.5}>
-            {post.comments.map((comment) => (
-              <Stack key={comment.id} direction="row" spacing={2}>
-                <Avatar alt={comment.author.name} src={comment.author.avatarUrl} />
+            {post.comment.map((comment) => (
+              <Stack key={Math.random() * 100000} direction="row" spacing={2}>
+                <Avatar alt={comment.name} src={comment.avatarUrl} />
                 <Paper sx={{ p: 1.5, flexGrow: 1, bgcolor: 'background.neutral' }}>
                   <Stack
                     direction={{ xs: 'column', sm: 'row' }}
@@ -149,7 +149,7 @@ export default function ProfilePostCard({ post }) {
                     justifyContent="space-between"
                     sx={{ mb: 0.5 }}
                   >
-                    <Typography variant="subtitle2">{comment.author.name}</Typography>
+                    <Typography variant="subtitle2">{comment.name}</Typography>
                     <Typography variant="caption" sx={{ color: 'text.disabled' }}>
                       {fDate(comment.createdAt)}
                     </Typography>

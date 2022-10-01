@@ -46,16 +46,16 @@ export default function BlogPost() {
   const [post, setPost] = useState(null);
 
   const [error, setError] = useState(null);
-
+  const [comments, setComments] = useState([]);
   const getPost = useCallback(async () => {
     try {
       const response = await axios.get('/post', {
         params: { id },
       });
 
-      console.log(response.data.post);
       if (isMountedRef.current) {
         setPost(response.data.post);
+        setComments(response.data.post.comment);
       }
     } catch (error) {
       console.error(error);
@@ -81,6 +81,18 @@ export default function BlogPost() {
     getPost();
     // getRecentPosts();
   }, [getPost]);
+
+  const onComment = async (value) => {
+    try {
+      const response = await axios.post('/post/comments', { postId: id, ...value });
+      if (response.status === 200) {
+        setComments((prevState) => [...prevState, value]);
+      }
+    } catch (error) {
+      console.error(error);
+      setError(error.message);
+    }
+  };
 
   return (
     <Page title="Blog: Post Details">
@@ -114,17 +126,12 @@ export default function BlogPost() {
               <Box sx={{ display: 'flex', mb: 2 }}>
                 <Typography variant="h4">Comments</Typography>
                 <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
-                  ({post.comments.length || 0})
+                  ({comments.length || 0})
                 </Typography>
               </Box>
 
-              {/*<BlogPostCommentList post={post} />*/}
-
-              {/*<Box sx={{ mb: 5, mt: 3, display: 'flex', justifyContent: 'flex-end' }}>*/}
-              {/*  <Pagination count={8} color="primary" />*/}
-              {/*</Box>*/}
-
-              <BlogPostCommentForm />
+              <BlogPostCommentList comments={comments} />
+              <BlogPostCommentForm onComment={onComment} />
             </Box>
           </Card>
         )}
@@ -132,8 +139,6 @@ export default function BlogPost() {
         {!post && !error && <SkeletonPost />}
 
         {error && <Typography variant="h6">404 {error}!</Typography>}
-
-        {/*<BlogPostRecent posts={recentPosts} />*/}
       </Container>
     </Page>
   );
