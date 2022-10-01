@@ -45,7 +45,7 @@ export default function BlogPostCard({ post, index }) {
         id={_id['$oid']}
         name={author?.name}
         view={view}
-        comment={comment}
+        comment={comment.length}
         share={share}
         createdAt={createdAt}
       />

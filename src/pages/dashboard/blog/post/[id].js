@@ -46,8 +46,7 @@ export default function BlogPost() {
   const [post, setPost] = useState(null);
 
   const [error, setError] = useState(null);
-  const [comment, setComment] = useState(['Hi']);
-  console.log(post);
+  const [comments, setComments] = useState([]);
   const getPost = useCallback(async () => {
     try {
       const response = await axios.get('/post', {
@@ -56,6 +55,7 @@ export default function BlogPost() {
 
       if (isMountedRef.current) {
         setPost(response.data.post);
+        setComments(response.data.post.comment);
       }
     } catch (error) {
       console.error(error);
@@ -82,8 +82,16 @@ export default function BlogPost() {
     // getRecentPosts();
   }, [getPost]);
 
-  const onComment = (value) => {
-    setComment((prevState) => [...prevState, value.comment]);
+  const onComment = async (value) => {
+    try {
+      const response = await axios.post('/post/comments', { postId: id, ...value });
+      if (response.status === 200) {
+        setComments((prevState) => [...prevState, value]);
+      }
+    } catch (error) {
+      console.error(error);
+      setError(error.message);
+    }
   };
 
   return (
@@ -118,21 +126,11 @@ export default function BlogPost() {
               <Box sx={{ display: 'flex', mb: 2 }}>
                 <Typography variant="h4">Comments</Typography>
                 <Typography variant="subtitle2" sx={{ color: 'text.disabled' }}>
-                  ({comment.length || 0})
+                  ({comments.length || 0})
                 </Typography>
               </Box>
 
-              {/*<BlogPostCommentList post={post} />*/}
-              {comment.map((comment, index) => (
-                <Typography key={index} mb={2}>
-                  {comment}
-                </Typography>
-              ))}
-
-              {/*<Box sx={{ mb: 5, mt: 3, display: 'flex', justifyContent: 'flex-end' }}>*/}
-              {/*  <Pagination count={8} color="primary" />*/}
-              {/*</Box>*/}
-
+              <BlogPostCommentList comments={comments} />
               <BlogPostCommentForm onComment={onComment} />
             </Box>
           </Card>

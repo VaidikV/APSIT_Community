@@ -60,7 +60,7 @@ export default function BlogNewPostForm({ isEdit, post }) {
 
   const defaultValues = {
     view: 0,
-    comment: 0,
+    comment: [],
     share: 0,
     like: 0,
     author: {
@@ -68,7 +68,7 @@ export default function BlogNewPostForm({ isEdit, post }) {
       moodleId: user.moodleId,
       avatarUrl: user.avatarUrl,
     },
-    createdAt: new Date().toDateString(),
+    createdAt: new Date(),
     title: '',
     description: '',
     content: '',

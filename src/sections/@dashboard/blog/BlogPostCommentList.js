@@ -7,12 +7,10 @@ import BlogPostCommentItem from './BlogPostCommentItem';
 // ----------------------------------------------------------------------
 
 BlogPostCommentList.propTypes = {
-  post: PropTypes.object.isRequired,
+  comments: PropTypes.array,
 };
 
-export default function BlogPostCommentList({ post }) {
-  const { comments } = post;
-
+export default function BlogPostCommentList({ comments }) {
   return (
     <List disablePadding>
       {comments.map((comment) => {
@@ -20,7 +18,7 @@ export default function BlogPostCommentList({ post }) {
         const hasReply = replyComment.length > 0;
 
         return (
-          <Box key={id} sx={{}}>
+          <Box key={Math.random() * 1000000000} sx={{}}>
             <BlogPostCommentItem
               name={comment.name}
               avatarUrl={comment.avatarUrl}
