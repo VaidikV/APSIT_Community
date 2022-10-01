@@ -60,7 +60,6 @@ export default function UserProfile() {
         const response = await axios.post('/user-post', {
           moodleId: user.moodleId,
         });
-        console.log(response);
         response.status === 200 ? setUserPosts(response.data.post) : new Error('An error has been occurred');
         setLoading(false);
       } catch (e) {
