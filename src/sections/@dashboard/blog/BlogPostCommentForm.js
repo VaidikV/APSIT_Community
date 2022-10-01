@@ -35,7 +35,7 @@ export default function BlogPostCommentForm({ onComment }) {
     name: user.displayName,
     avatarUrl: user.avatarUrl,
     message: '',
-    postedAt: new Date().toDateString(),
+    postedAt: new Date().toISOString(),
     users: [],
     replyComment: [],
   };
@@ -52,7 +52,6 @@ export default function BlogPostCommentForm({ onComment }) {
   } = methods;
 
   const onSubmit = async (message) => {
-    console.log(message);
     onComment(message);
     reset();
   };

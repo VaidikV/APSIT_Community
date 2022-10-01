@@ -150,7 +150,7 @@ export default function ProfilePostCard({ post }) {
                   >
                     <Typography variant="subtitle2">{comment.name}</Typography>
                     <Typography variant="caption" sx={{ color: 'text.disabled' }}>
-                      {fDate(comment.createdAt)}
+                      {fDate(comment.postedAt)}
                     </Typography>
                   </Stack>
                   <Typography variant="body2" sx={{ color: 'text.secondary' }}>
