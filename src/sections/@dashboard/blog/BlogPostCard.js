@@ -21,7 +21,7 @@ BlogPostCard.propTypes = {
   index: PropTypes.number,
 };
 
-export default function BlogPostCard({ post, index }) {
+export default function BlogPostCard({ post }) {
   const { title, _id, view, comment, share, author, createdAt } = post;
 
   return (
@@ -61,17 +61,17 @@ PostContent.propTypes = {
   index: PropTypes.number,
   name: PropTypes.string,
   share: PropTypes.number,
+  like: PropTypes.number,
   id: PropTypes.any,
   title: PropTypes.string,
   view: PropTypes.number,
 };
 
-export function PostContent({ title, id, name, view, comment, share, createdAt, index }) {
+export function PostContent({ title, id, name, comment, like, createdAt }) {
   const linkTo = `${PATH_DASHBOARD.blog.root}/post/${id}`;
   const POST_INFO = [
     { number: comment, icon: 'eva:message-circle-fill' },
-    { number: view, icon: 'eva:eye-fill' },
-    { number: share, icon: 'eva:share-fill' },
+    { number: like, icon: 'eva:heart-fill' },
   ];
 
   return (

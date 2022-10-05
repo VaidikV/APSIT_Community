@@ -17,8 +17,6 @@ import { IconButtonAnimate } from '../../../components/animate';
 
 import AccountPopover from './AccountPopover';
 
-import NotificationsPopover from './NotificationsPopover';
-
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(AppBar, {
@@ -81,7 +79,7 @@ export default function DashboardHeader({ onOpenSidebar, isCollapse = false, ver
         <Box sx={{ flexGrow: 1 }} />
 
         <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5 }}>
-          <NotificationsPopover />
+          {/*<NotificationsPopover />*/}
 
           <AccountPopover />
         </Stack>

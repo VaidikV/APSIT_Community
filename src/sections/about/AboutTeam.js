@@ -4,12 +4,9 @@ import { useRef } from 'react';
 import Slider from 'react-slick';
 // @mui
 import { useTheme } from '@mui/material/styles';
-import { Box, Stack, Card, Button, Container, Typography } from '@mui/material';
-// _mock_
-import { _carouselsMembers } from '../../_mock';
+import { Box, Stack, Card, Container, Typography } from '@mui/material';
 // components
 import Image from '../../components/Image';
-import Iconify from '../../components/Iconify';
 import { CarouselArrows } from '../../components/carousel';
 import SocialsButton from '../../components/SocialsButton';
 import { MotionViewport, varFade } from '../../components/animate';
@@ -50,6 +47,29 @@ export default function AboutTeam() {
     carouselRef.current?.slickNext();
   };
 
+  const _members = [
+    {
+      name: 'Abhishek Tiwari',
+      role: 'Full stack developer',
+      avatar: '/about/abhishek.jpeg',
+    },
+    {
+      name: 'Sana Sheikh',
+      role: 'Designer',
+      avatar: '/about/sana.jpeg',
+    },
+    // {
+    //   name: 'Vaidik Vadhawana',
+    //   role: 'Backend developer',
+    //   avatar: '/about/sana.jpeg',
+    // },
+    // {
+    //   name: 'Abhay Sharma',
+    //   role: 'Backend developer',
+    //   avatar: '/about/sana.jpeg',
+    // },
+  ];
+
   return (
     <Container component={MotionViewport} sx={{ pb: 10, textAlign: 'center' }}>
       <m.div variants={varFade().inDown}>
@@ -67,8 +87,8 @@ export default function AboutTeam() {
       <Box sx={{ position: 'relative' }}>
         <CarouselArrows filled onNext={handleNext} onPrevious={handlePrevious}>
           <Slider ref={carouselRef} {...settings}>
-            {_carouselsMembers.map((member) => (
-              <Box key={member.id} component={m.div} variants={varFade().in} sx={{ px: 1.5, py: 10 }}>
+            {_members.map((member) => (
+              <Box key={Math.random() * 10000} component={m.div} variants={varFade().in} sx={{ px: 1.5, py: 10 }}>
                 <MemberCard member={member} />
               </Box>
             ))}

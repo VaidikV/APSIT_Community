@@ -35,10 +35,10 @@ export default function SocialsButton({ initialColor = false, simple = true, lin
       path: links.linkedin || '#linkedin-link',
     },
     {
-      name: 'Twitter',
-      icon: 'eva:twitter-fill',
+      name: 'Github',
+      icon: 'eva:github-fill',
       socialColor: '#00AAEC',
-      path: links.twitter || '#twitter-link',
+      path: links.twitter || '#github-link',
     },
   ];
 

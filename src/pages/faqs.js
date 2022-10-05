@@ -39,7 +39,7 @@ export default function Faqs() {
           <FaqsCategory />
 
           <Typography variant="h3" sx={{ mb: 5 }}>
-            Found any bugs?
+            Found any bug?
           </Typography>
 
           <Grid container spacing={10}>

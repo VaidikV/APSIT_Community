@@ -90,7 +90,7 @@ export default function BlogPosts() {
         </Stack>
 
         <Grid container spacing={3}>
-          {(!posts.length ? [...Array(12)] : sortedPosts).map((post, index) =>
+          {(!posts.length ? [...Array(4)] : sortedPosts).map((post, index) =>
             post ? (
               <Grid key={post._id['$oid']} item xs={12} sm={6} md={(index === 0 && 6) || 3}>
                 <BlogPostCard post={post} index={index} />
