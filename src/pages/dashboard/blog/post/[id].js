@@ -3,7 +3,7 @@ import { sentenceCase } from 'change-case';
 // next
 import { useRouter } from 'next/router';
 // @mui
-import { Box, Card, Divider, Container, Typography, Pagination } from '@mui/material';
+import { Box, Card, Divider, Container, Typography } from '@mui/material';
 // routes
 import { PATH_DASHBOARD } from '../../../../routes/paths';
 // hooks
@@ -101,7 +101,7 @@ export default function BlogPost() {
           heading="Post Details"
           links={[
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
-            { name: 'Blog', href: PATH_DASHBOARD.blog.root },
+            { name: 'Blog', href: PATH_DASHBOARD.root },
             { name: sentenceCase(post?.title || 'Fetching') },
           ]}
         />

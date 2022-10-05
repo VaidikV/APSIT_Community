@@ -16,22 +16,22 @@ const LINKS = [
     headline: 'APSIT Community',
     children: [
       { name: 'About us', href: PATH_PAGE.about },
-      { name: 'Contact us', href: PATH_PAGE.contact },
-      { name: 'FAQs', href: PATH_PAGE.faqs },
+      // { name: 'Contact us', href: PATH_PAGE.faqs },
+      { name: 'Contact us', href: PATH_PAGE.faqs },
     ],
   },
   {
     headline: 'Legal',
     children: [
-      { name: 'Terms and Condition', href: '#' },
+      { name: 'Terms and Condition', href: '/Terms&Conditions.pdf' },
       { name: 'Privacy Policy', href: '#' },
     ],
   },
   {
     headline: 'Contact',
     children: [
-      { name: 'support@apsitcommunity.cc', href: '#' },
-      { name: 'AP Shah Institute of Technology, Kasarwadavali, Thane', href: '#' },
+      { name: 'support@apsitcommunity.edu.in', href: 'mailto:support@apsitcommunity.edu.in' },
+      { name: 'AP Shah Institute of Technology, Kasarvadavali, Thane , Maharashtra - 400615', href: '#' },
     ],
   },
 ];

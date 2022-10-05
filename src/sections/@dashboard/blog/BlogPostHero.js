@@ -1,35 +1,17 @@
 import PropTypes from 'prop-types';
 // @mui
 import { alpha, styled } from '@mui/material/styles';
-import { Box, Avatar, SpeedDial, Typography, SpeedDialAction } from '@mui/material';
-// hooks
-import useResponsive from '../../../hooks/useResponsive';
+import { Box, Avatar, Typography, IconButton, Tooltip } from '@mui/material';
+
 // utils
 import { fDate } from '../../../utils/formatTime';
 // components
 import Image from '../../../components/Image';
 import Iconify from '../../../components/Iconify';
 
-// ----------------------------------------------------------------------
+import { useSnackbar } from 'notistack';
 
-const SOCIALS = [
-  {
-    name: 'Facebook',
-    icon: <Iconify icon="eva:facebook-fill" width={20} height={20} color="#1877F2" />,
-  },
-  {
-    name: 'Instagram',
-    icon: <Iconify icon="ant-design:instagram-filled" width={20} height={20} color="#D7336D" />,
-  },
-  {
-    name: 'Linkedin',
-    icon: <Iconify icon="eva:linkedin-fill" width={20} height={20} color="#006097" />,
-  },
-  {
-    name: 'Twitter',
-    icon: <Iconify icon="eva:twitter-fill" width={20} height={20} color="#1C9CEA" />,
-  },
-];
+// ----------------------------------------------------------------------
 
 const OverlayStyle = styled('h1')(({ theme }) => ({
   top: 0,
@@ -82,8 +64,10 @@ BlogPostHero.propTypes = {
 
 export default function BlogPostHero({ post }) {
   const { cover, title, author, createdAt } = post;
-
-  const isDesktop = useResponsive('up', 'sm');
+  const { enqueueSnackbar } = useSnackbar();
+  const copyToClipboardHandler = () => {
+    navigator.clipboard.writeText(location.href).then(() => enqueueSnackbar(`Link copied!`));
+  };
 
   return (
     <Box sx={{ position: 'relative' }}>
@@ -101,23 +85,16 @@ export default function BlogPostHero({ post }) {
             </Typography>
           </Box>
         </Box>
-
-        <SpeedDial
-          direction={isDesktop ? 'left' : 'up'}
-          ariaLabel="Share post"
-          icon={<Iconify icon="eva:share-fill" sx={{ width: 20, height: 20 }} />}
-          sx={{ '& .MuiSpeedDial-fab': { width: 48, height: 48 } }}
-        >
-          {SOCIALS.map((action) => (
-            <SpeedDialAction
-              key={action.name}
-              icon={action.icon}
-              tooltipTitle={action.name}
-              tooltipPlacement="top"
-              FabProps={{ color: 'default' }}
-            />
-          ))}
-        </SpeedDial>
+        <Tooltip title="Copy link">
+          <IconButton
+            aria-label="Share"
+            onClick={copyToClipboardHandler}
+            color="secondary"
+            sx={{ width: 48, height: 48 }}
+          >
+            <Iconify icon="eva:share-fill" sx={{ width: 20, height: 20 }} />
+          </IconButton>
+        </Tooltip>
       </FooterStyle>
 
       <OverlayStyle />
