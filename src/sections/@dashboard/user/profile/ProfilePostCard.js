@@ -30,6 +30,7 @@ import useAuth from '../../../../hooks/useAuth';
 // utils
 import { fDate } from '../../../../utils/formatTime';
 import { fShortenNumber } from '../../../../utils/formatNumber';
+
 // components
 import Image from '../../../../components/Image';
 import Iconify from '../../../../components/Iconify';
@@ -54,9 +55,9 @@ export default function ProfilePostCard({ post }) {
 
   const fileInputRef = useRef(null);
 
-  const [isLiked, setLiked] = useState(post.isLiked);
+  const [isLiked, setLiked] = useState(post.like.includes(user.moodleId));
 
-  const [likes, setLikes] = useState(post.personLikes?.length);
+  const [likes, setLikes] = useState(post.like.length);
 
   const [message, setMessage] = useState('');
 
@@ -65,11 +66,33 @@ export default function ProfilePostCard({ post }) {
   const handleLike = () => {
     setLiked(true);
     setLikes((prevLikes) => prevLikes + 1);
+    axios
+      .post('/post/like', {
+        postId: post._id['$oid'],
+        moodleId: user.moodleId,
+      })
+      .then((response) => {
+        console.log(response.data.message);
+      })
+      .catch((reason) => {
+        console.error(reason);
+      });
   };
 
   const handleUnlike = () => {
     setLiked(false);
     setLikes((prevLikes) => prevLikes - 1);
+    axios
+      .post('/post/like', {
+        postId: post._id['$oid'],
+        moodleId: user.moodleId,
+      })
+      .then((response) => {
+        console.log(response.data.message);
+      })
+      .catch((reason) => {
+        console.error(reason);
+      });
   };
 
   const handleChangeMessage = (value) => {
