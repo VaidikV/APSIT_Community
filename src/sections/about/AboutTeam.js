@@ -52,22 +52,38 @@ export default function AboutTeam() {
       name: 'Abhishek Tiwari',
       role: 'Full stack developer',
       avatar: '/about/abhishek.jpeg',
+      links: {
+        linkedin: 'https://www.linkedin.com/in/itsabhishektiwari/',
+        github: 'https://github.com/itssabhishek',
+      },
     },
     {
       name: 'Sana Sheikh',
       role: 'Designer',
       avatar: '/about/sana.jpeg',
+      links: {
+        linkedin: 'https://www.linkedin.com/in/sana-s-265sk/',
+        github: 'https://github.com/Sana2602',
+      },
     },
-    // {
-    //   name: 'Vaidik Vadhawana',
-    //   role: 'Backend developer',
-    //   avatar: '/about/sana.jpeg',
-    // },
-    // {
-    //   name: 'Abhay Sharma',
-    //   role: 'Backend developer',
-    //   avatar: '/about/sana.jpeg',
-    // },
+    {
+      name: 'Vaidik Vadhawana',
+      role: 'Backend developer',
+      avatar: '/about/vaidik.jpeg',
+      links: {
+        linkedin: 'https://www.linkedin.com/in/vaidik-v/',
+        github: 'https://github.com/VaidikV',
+      },
+    },
+    {
+      name: 'Abhay Sharma',
+      role: 'Backend developer',
+      avatar: '/about/abhay.jpeg',
+      links: {
+        linkedin: 'https://www.linkedin.com/in/abhay-sharma-bab270221/',
+        github: 'https://github.com/abhay9819',
+      },
+    },
   ];
 
   return (
@@ -106,11 +122,12 @@ MemberCard.propTypes = {
     avatar: PropTypes.string,
     name: PropTypes.string,
     role: PropTypes.string,
+    links: PropTypes.object,
   }),
 };
 
 function MemberCard({ member }) {
-  const { name, role, avatar } = member;
+  const { name, role, avatar, links } = member;
 
   return (
     <Card key={name} sx={{ p: 1 }}>
@@ -122,7 +139,7 @@ function MemberCard({ member }) {
       </Typography>
       <Image alt={name} src={avatar} ratio="1/1" sx={{ borderRadius: 1.5 }} />
       <Stack alignItems="center" sx={{ mt: 2, mb: 1 }}>
-        <SocialsButton sx={{ color: 'action.active' }} />
+        <SocialsButton links={links} sx={{ color: 'action.active' }} />
       </Stack>
     </Card>
   );

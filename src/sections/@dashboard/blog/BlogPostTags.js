@@ -7,6 +7,7 @@ import axios from '../../../utils/axios';
 // components
 import Iconify from '../../../components/Iconify';
 import useAuth from '../../../hooks/useAuth';
+import { useState } from 'react';
 
 // ----------------------------------------------------------------------
 
@@ -17,22 +18,71 @@ BlogPostTags.propTypes = {
 export default function BlogPostTags({ post }) {
   const { user } = useAuth();
 
-  const { like, _id } = post;
+  const [isLiked, setLiked] = useState(post.like.includes(user.moodleId));
+  const [isBookmarked, setBookmarked] = useState(user.bookmark.includes(post._id['$oid']));
 
-  const likeHandler = async () => {
-    try {
-      await axios.post('/like', { moodleId: user.moodleId, postId: _id['$oid'] });
-    } catch (e) {
-      console.error(e.message);
-    }
+  const [likes, setLikes] = useState(post.like.length);
+
+  const handleLike = () => {
+    setLiked(true);
+    setLikes((prevLikes) => prevLikes + 1);
+    axios
+      .post('/post/like', {
+        postId: post._id['$oid'],
+        moodleId: user.moodleId,
+      })
+      .then((response) => {
+        console.log(response.data.message);
+      })
+      .catch((reason) => {
+        console.error(reason);
+      });
   };
 
-  const bookmarkHandler = async () => {
-    try {
-      await axios.post('/bookmark', { moodleId: user.moodleId, postId: _id['$oid'] });
-    } catch (e) {
-      console.error(e.message);
-    }
+  const handleUnlike = () => {
+    setLiked(false);
+    setLikes((prevLikes) => prevLikes - 1);
+    axios
+      .post('/post/like', {
+        postId: post._id['$oid'],
+        moodleId: user.moodleId,
+      })
+      .then((response) => {
+        console.log(response.data.message);
+      })
+      .catch((reason) => {
+        console.error(reason);
+      });
+  };
+
+  const handleBookmark = () => {
+    setBookmarked(true);
+    axios
+      .post('/post/bookmark', {
+        postId: post._id['$oid'],
+        moodleId: user.moodleId,
+      })
+      .then((response) => {
+        console.log(response.data.message);
+      })
+      .catch((reason) => {
+        console.error(reason);
+      });
+  };
+
+  const handleUnBookmark = () => {
+    setBookmarked(false);
+    axios
+      .post('/post/bookmark', {
+        postId: post._id['$oid'],
+        moodleId: user.moodleId,
+      })
+      .then((response) => {
+        console.log(response.data.message);
+      })
+      .catch((reason) => {
+        console.error(reason);
+      });
   };
 
   return (
@@ -42,19 +92,21 @@ export default function BlogPostTags({ post }) {
           control={
             <Checkbox
               size="small"
-              onChange={likeHandler}
+              checked={isLiked}
+              onChange={isLiked ? handleUnlike : handleLike}
               color="error"
               icon={<Iconify icon="eva:heart-fill" />}
               checkedIcon={<Iconify icon="eva:heart-fill" />}
             />
           }
-          label={fShortenNumber(like)}
+          label={fShortenNumber(likes)}
         />
         <FormControlLabel
           control={
             <Checkbox
               size="small"
-              onChange={bookmarkHandler}
+              checked={isBookmarked}
+              onChange={isBookmarked ? handleUnBookmark : handleBookmark}
               color="success"
               icon={<Iconify icon="eva:bookmark-outline" />}
               checkedIcon={<Iconify icon="eva:bookmark-fill" />}

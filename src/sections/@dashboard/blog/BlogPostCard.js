@@ -22,8 +22,7 @@ BlogPostCard.propTypes = {
 };
 
 export default function BlogPostCard({ post }) {
-  const { title, _id, view, comment, share, author, createdAt } = post;
-
+  const { title, _id, view, comment, like, author, createdAt } = post;
   return (
     <Card>
       <Box sx={{ position: 'relative' }}>
@@ -45,8 +44,8 @@ export default function BlogPostCard({ post }) {
         id={_id['$oid']}
         name={author?.name}
         view={view}
-        comment={comment.length}
-        share={share}
+        comment={comment?.length}
+        like={like?.length}
         createdAt={createdAt}
       />
     </Card>

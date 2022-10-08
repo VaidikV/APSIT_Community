@@ -55,6 +55,7 @@ export default function RegisterForm() {
     moodleId: '',
     email: '',
     password: '',
+    bookmark: [],
   };
 
   const methods = useForm({
