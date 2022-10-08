@@ -72,7 +72,7 @@ export default function RegisterForm() {
 
   const onSubmit = async (data) => {
     try {
-      await register(data);
+      await register({ ...data, bookmark: [] });
     } catch (error) {
       console.error(error);
       reset();
