@@ -4,7 +4,7 @@ import NextLink from 'next/link';
 import { styled } from '@mui/material/styles';
 import { Button, Box, Container, Typography, Stack } from '@mui/material';
 // routes
-import { PATH_AUTH, PATH_DASHBOARD } from '../../routes/paths';
+import { PATH_AUTH } from '../../routes/paths';
 // components
 import Iconify from '../../components/Iconify';
 import { MotionContainer, varFade } from '../../components/animate';
@@ -39,13 +39,13 @@ const ContentStyle = styled((props) => <Stack spacing={5} {...props} />)(({ them
   },
 }));
 
-const HeroOverlayStyle = styled(m.img)({
-  zIndex: 9,
-  width: '100%',
-  height: '100%',
-  objectFit: 'cover',
-  position: 'absolute',
-});
+// const HeroOverlayStyle = styled(m.img)({
+//   zIndex: 9,
+//   width: '100%',
+//   height: '100%',
+//   objectFit: 'cover',
+//   position: 'absolute',
+// });
 
 const HeroImgStyle = styled(m.img)(({ theme }) => ({
   top: 0,
@@ -68,7 +68,7 @@ export default function HomeHero() {
   return (
     <MotionContainer>
       <RootStyle>
-        <HeroOverlayStyle alt="overlay" src="https://minimals.cc/assets/overlay.svg" variants={varFade().in} />
+        {/*<HeroOverlayStyle alt="overlay" src="https://minimals.cc/assets/overlay.svg" variants={varFade().in} />*/}
 
         <HeroImgStyle alt="hero" src="/community-3d.png" variants={varFade().inUp} />
 

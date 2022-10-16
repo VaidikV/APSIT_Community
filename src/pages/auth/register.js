@@ -1,11 +1,9 @@
-import { capitalCase } from 'change-case';
 // next
 import NextLink from 'next/link';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Box, Card, Link, Container, Typography, Tooltip } from '@mui/material';
+import { Box, Card, Link, Container, Typography } from '@mui/material';
 // hooks
-import useAuth from '../../hooks/useAuth';
 import useResponsive from '../../hooks/useResponsive';
 // routes
 import { PATH_AUTH } from '../../routes/paths';
@@ -64,8 +62,6 @@ const ContentStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function Register() {
-  const { method } = useAuth();
-
   const smUp = useResponsive('up', 'sm');
   const mdUp = useResponsive('up', 'md');
 
@@ -90,7 +86,7 @@ export default function Register() {
               <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
                 We are very excited to have you
               </Typography>
-              <Image alt="register" src="https://minimals.cc/assets/illustrations/illustration_register.png" />
+              <Image alt="register" src="/illustration_signin.png" />
             </SectionStyle>
           )}
 

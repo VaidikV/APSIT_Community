@@ -6,7 +6,6 @@ import { Box, Card, Stack, Link, Container, Typography } from '@mui/material';
 // routes
 import { PATH_AUTH } from '../../routes/paths';
 // hooks
-import useAuth from '../../hooks/useAuth';
 import useResponsive from '../../hooks/useResponsive';
 // guards
 import GuestGuard from '../../guards/GuestGuard';
@@ -63,8 +62,6 @@ const ContentStyle = styled('div')(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function Login() {
-  const { method } = useAuth();
-
   const smUp = useResponsive('up', 'sm');
 
   const mdUp = useResponsive('up', 'md');
@@ -90,7 +87,7 @@ export default function Login() {
               <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
                 Hi, Welcome Back
               </Typography>
-              <Image src="https://minimals.cc/assets/illustrations/illustration_login.png" alt="login" />
+              <Image src="/illustration_signin.png" alt="login" />
             </SectionStyle>
           )}
 
