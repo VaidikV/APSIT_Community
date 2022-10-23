@@ -1,12 +1,12 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 // next
-import NextLink from 'next/link';
+import NextLink from "next/link";
 // @mui
-import { Box, Link, ListItemText } from '@mui/material';
+import { Box, Link, ListItemText } from "@mui/material";
 //
-import Iconify from '../../Iconify';
-import { ListItemStyle, ListItemTextStyle, ListItemIconStyle } from './style';
-import { isExternalLink } from '..';
+import Iconify from "../../Iconify";
+import { ListItemIconStyle, ListItemStyle, ListItemTextStyle } from "./style";
+import { isExternalLink } from "..";
 
 // ----------------------------------------------------------------------
 

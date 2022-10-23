@@ -1,13 +1,13 @@
-import PropTypes from 'prop-types';
-import isString from 'lodash/isString';
-import { useDropzone } from 'react-dropzone';
+import PropTypes from "prop-types";
+import isString from "lodash/isString";
+import { useDropzone } from "react-dropzone";
 // @mui
-import { Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
 //
-import Image from '../Image';
-import Iconify from '../Iconify';
-import RejectionFiles from './RejectionFiles';
+import Image from "../Image";
+import Iconify from "../Iconify";
+import RejectionFiles from "./RejectionFiles";
 
 // ----------------------------------------------------------------------
 

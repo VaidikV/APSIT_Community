@@ -1,12 +1,12 @@
 // @mui
 import { styled } from '@mui/material/styles';
-import { Grid, Container } from '@mui/material';
+import { Container, Grid } from '@mui/material';
 // layouts
 import Layout from '../layouts';
 // components
 import Page from '../components/Page';
 // sections
-import { ContactHero, ContactForm } from '../sections/contact';
+import { ContactForm, ContactHero } from '../sections/contact';
 
 // ----------------------------------------------------------------------
 

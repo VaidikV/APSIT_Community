@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types';
-import { useState, useEffect, useRef } from 'react';
+import PropTypes from "prop-types";
+import { useEffect, useRef, useState } from "react";
 // next
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 //
-import { NavItemRoot, NavItemSub } from './NavItem';
-import { PaperStyle } from './style';
-import { getActive } from '..';
+import { NavItemRoot, NavItemSub } from "./NavItem";
+import { PaperStyle } from "./style";
+import { getActive } from "..";
 
 // ----------------------------------------------------------------------
 

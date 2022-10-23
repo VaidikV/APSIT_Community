@@ -1,14 +1,14 @@
-import 'emoji-mart/css/emoji-mart.css';
-import PropTypes from 'prop-types';
-import { Picker } from 'emoji-mart';
-import { useState } from 'react';
+import "emoji-mart/css/emoji-mart.css";
+import PropTypes from "prop-types";
+import { Picker } from "emoji-mart";
+import { useState } from "react";
 // @mui
-import { useTheme, styled } from '@mui/material/styles';
-import { Box, IconButton, ClickAwayListener } from '@mui/material';
+import { styled, useTheme } from "@mui/material/styles";
+import { Box, ClickAwayListener, IconButton } from "@mui/material";
 // utils
-import cssStyles from '../utils/cssStyles';
+import cssStyles from "../utils/cssStyles";
 //
-import Iconify from './Iconify';
+import Iconify from "./Iconify";
 
 // ----------------------------------------------------------------------
 

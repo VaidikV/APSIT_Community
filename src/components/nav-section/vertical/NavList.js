@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types';
-import { useState } from 'react';
-import { useRouter } from 'next/router';
+import PropTypes from "prop-types";
+import { useState } from "react";
+import { useRouter } from "next/router";
 // @mui
-import { List, Collapse } from '@mui/material';
+import { Collapse, List } from "@mui/material";
 //
-import { NavItemRoot, NavItemSub } from './NavItem';
-import { getActive } from '..';
+import { NavItemRoot, NavItemSub } from "./NavItem";
+import { getActive } from "..";
 
 // ----------------------------------------------------------------------
 

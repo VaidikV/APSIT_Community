@@ -4,7 +4,7 @@ import { createContext, useEffect, useState } from 'react';
 // utils
 import getColorPresets, { colorPresets, defaultPreset } from '../utils/getColorPresets';
 // config
-import { defaultSettings, cookiesKey, cookiesExpires } from '../config';
+import { cookiesExpires, cookiesKey, defaultSettings } from '../config';
 
 // ----------------------------------------------------------------------
 

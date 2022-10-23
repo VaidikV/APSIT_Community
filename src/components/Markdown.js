@@ -1,11 +1,11 @@
 import ReactMarkdown from 'react-markdown';
-// markdown plugins
+// Markdown plugins
 import rehypeRaw from 'rehype-raw';
 // next
 import NextLink from 'next/link';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Link, Typography, Divider } from '@mui/material';
+import { Divider, Link, Typography } from '@mui/material';
 //
 import Image from './Image';
 

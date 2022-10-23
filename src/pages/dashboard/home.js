@@ -1,5 +1,4 @@
 // @mui
-import { useTheme } from '@mui/material/styles';
 import { Container, Grid } from '@mui/material';
 // hooks
 import useAuth from '../../hooks/useAuth';

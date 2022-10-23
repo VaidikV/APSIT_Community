@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
-import { forwardRef } from 'react';
-import NextLink from 'next/link';
+import PropTypes from "prop-types";
+import { forwardRef } from "react";
+import NextLink from "next/link";
 // @mui
-import { useTheme } from '@mui/material/styles';
-import { Box } from '@mui/material';
-import { PATH_DASHBOARD } from '../routes/paths';
+import { useTheme } from "@mui/material/styles";
+import { Box } from "@mui/material";
+import { PATH_DASHBOARD } from "../routes/paths";
 
 // ----------------------------------------------------------------------
 

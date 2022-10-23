@@ -2,7 +2,7 @@
 import NextLink from 'next/link';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Box, Card, Link, Container, Typography } from '@mui/material';
+import { Box, Card, Container, Link, Typography } from '@mui/material';
 // hooks
 import useResponsive from '../../hooks/useResponsive';
 // routes

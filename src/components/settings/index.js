@@ -1,27 +1,23 @@
-import PropTypes from 'prop-types';
-import { AnimatePresence, m } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import PropTypes from "prop-types";
+import { AnimatePresence, m } from "framer-motion";
+import { useEffect, useState } from "react";
 // @mui
-import { alpha, styled } from '@mui/material/styles';
-import { Backdrop, Divider, Typography, Stack, FormControlLabel, Radio } from '@mui/material';
+import { alpha, styled } from "@mui/material/styles";
+import { Backdrop, Divider, FormControlLabel, Radio, Stack, Typography } from "@mui/material";
 // hooks
-import useSettings from '../../hooks/useSettings';
+import useSettings from "../../hooks/useSettings";
 // utils
-import cssStyles from '../../utils/cssStyles';
+import cssStyles from "../../utils/cssStyles";
 // config
-import { NAVBAR, defaultSettings } from '../../config';
+import { defaultSettings, NAVBAR } from "../../config";
 //
-import Iconify from '../Iconify';
-import Scrollbar from '../Scrollbar';
-import { IconButtonAnimate, varFade } from '../animate';
+import Iconify from "../Iconify";
+import Scrollbar from "../Scrollbar";
+import { IconButtonAnimate, varFade } from "../animate";
 //
-import ToggleButton from './ToggleButton';
-import SettingMode from './SettingMode';
-import SettingLayout from './SettingLayout';
-import SettingStretch from './SettingStretch';
-import SettingDirection from './SettingDirection';
-import SettingFullscreen from './SettingFullscreen';
-import SettingColorPresets from './SettingColorPresets';
+import ToggleButton from "./ToggleButton";
+import SettingMode from "./SettingMode";
+import SettingFullscreen from "./SettingFullscreen";
 
 // ----------------------------------------------------------------------
 

@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 // @mui
-import { Box, Radio, RadioGroup } from '@mui/material';
+import { Box, Radio, RadioGroup } from "@mui/material";
 // components
-import Iconify from '../Iconify';
+import Iconify from "../Iconify";
 
 // ----------------------------------------------------------------------
 

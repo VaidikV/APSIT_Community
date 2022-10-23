@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 // @mui
-import { alpha, styled } from '@mui/material/styles';
-import { Box, Typography } from '@mui/material';
+import { alpha, styled } from "@mui/material/styles";
+import { Box, Typography } from "@mui/material";
 
 // ----------------------------------------------------------------------
 

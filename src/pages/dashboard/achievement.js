@@ -1,7 +1,6 @@
 // @mui
 import { Container, Grid } from '@mui/material';
 // hooks
-
 import useSettings from '../../hooks/useSettings';
 // layouts
 import Layout from '../../layouts';

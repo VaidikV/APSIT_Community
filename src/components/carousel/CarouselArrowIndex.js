@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 // @mui
-import { alpha, useTheme, styled } from '@mui/material/styles';
-import { Typography, Box, IconButton } from '@mui/material';
+import { alpha, styled, useTheme } from "@mui/material/styles";
+import { Box, IconButton, Typography } from "@mui/material";
 //
-import Iconify from '../Iconify';
+import Iconify from "../Iconify";
 
 // ----------------------------------------------------------------------
 

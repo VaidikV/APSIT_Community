@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 // @mui
-import { useTheme, styled } from '@mui/material/styles';
-import { Box, Stack } from '@mui/material';
+import { styled, useTheme } from "@mui/material/styles";
+import { Box, Stack } from "@mui/material";
 //
-import Iconify from '../Iconify';
-import { IconButtonAnimate } from '../animate';
+import Iconify from "../Iconify";
+import { IconButtonAnimate } from "../animate";
 
 // ----------------------------------------------------------------------
 

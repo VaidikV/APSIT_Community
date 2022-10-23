@@ -1,7 +1,7 @@
 import { capitalCase } from 'change-case';
 import { useState } from 'react';
 // @mui
-import { Container, Tab, Box, Tabs } from '@mui/material';
+import { Box, Container, Tab, Tabs } from '@mui/material';
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
 // hooks

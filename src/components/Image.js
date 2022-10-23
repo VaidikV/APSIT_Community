@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import PropTypes from "prop-types";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 // @mui
-import { Box } from '@mui/material';
+import { Box } from "@mui/material";
 
 // ----------------------------------------------------------------------
 

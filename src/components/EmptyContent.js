@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 // @mui
-import { styled } from '@mui/material/styles';
-import { Typography, Box } from '@mui/material';
+import { styled } from "@mui/material/styles";
+import { Box, Typography } from "@mui/material";
 //
-import Image from './Image';
+import Image from "./Image";
 
 // ----------------------------------------------------------------------
 

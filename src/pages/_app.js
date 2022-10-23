@@ -41,7 +41,7 @@ import { PersistGate } from 'redux-persist/lib/integration/react';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 // redux
-import { store, persistor } from '../redux/store';
+import { persistor, store } from '../redux/store';
 // utils
 import { getSettings } from '../utils/settings';
 // contexts
