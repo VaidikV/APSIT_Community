@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 // next
-import NextLink from 'next/link';
+import NextLink from "next/link";
 // @mui
-import { Box, Link, Typography, Breadcrumbs as MUIBreadcrumbs } from '@mui/material';
+import { Box, Breadcrumbs as MUIBreadcrumbs, Link, Typography } from "@mui/material";
 
 // ----------------------------------------------------------------------
 

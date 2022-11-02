@@ -1,8 +1,8 @@
 // @mui
-import { alpha, styled } from '@mui/material/styles';
-import { Button, Popover } from '@mui/material';
+import { alpha, styled } from "@mui/material/styles";
+import { Button, Popover } from "@mui/material";
 // config
-import { NAVBAR } from '../../../config';
+import { NAVBAR } from "../../../config";
 
 // ----------------------------------------------------------------------
 

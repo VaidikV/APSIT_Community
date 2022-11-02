@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
-import { forwardRef } from 'react';
+import PropTypes from "prop-types";
+import { forwardRef } from "react";
 // @mui
-import { Typography, Link } from '@mui/material';
+import { Link, Typography } from "@mui/material";
 // utils
-import GetFontValue from '../utils/getFontValue';
+import GetFontValue from "../utils/getFontValue";
 
 // ----------------------------------------------------------------------
 

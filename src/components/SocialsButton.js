@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 // @mui
 import { alpha } from '@mui/material/styles';
-import { Link, Stack, Button, Tooltip, IconButton } from '@mui/material';
+import { Button, IconButton, Link, Stack, Tooltip } from '@mui/material';
 //
 import Iconify from './Iconify';
 

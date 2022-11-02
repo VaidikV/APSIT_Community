@@ -1,13 +1,11 @@
 import orderBy from 'lodash/orderBy';
-import { useEffect, useCallback, useState } from 'react';
+import { useState } from 'react';
 
 // @mui
-import { Grid, Container, Button } from '@mui/material';
+import { Container, Grid } from '@mui/material';
 // hooks
 import useSettings from '../../../hooks/useSettings';
-import useIsMountedRef from '../../../hooks/useIsMountedRef';
 // utils
-import axios from '../../../utils/axios';
 
 // layouts
 import Layout from '../../../layouts';

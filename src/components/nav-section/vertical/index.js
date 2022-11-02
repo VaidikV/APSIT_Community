@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 // @mui
-import { styled } from '@mui/material/styles';
-import { List, Box, ListSubheader } from '@mui/material';
+import { styled } from "@mui/material/styles";
+import { Box, List, ListSubheader } from "@mui/material";
 //
-import { NavListRoot } from './NavList';
+import { NavListRoot } from "./NavList";
 
 // ----------------------------------------------------------------------
 

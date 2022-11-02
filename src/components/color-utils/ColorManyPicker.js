@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 // @mui
-import { Box, Checkbox } from '@mui/material';
+import { Box, Checkbox } from "@mui/material";
 //
-import Iconify from '../Iconify';
+import Iconify from "../Iconify";
 
 // ----------------------------------------------------------------------
 

@@ -1,15 +1,15 @@
-import PropTypes from 'prop-types';
-import isString from 'lodash/isString';
-import { m, AnimatePresence } from 'framer-motion';
+import PropTypes from "prop-types";
+import isString from "lodash/isString";
+import { AnimatePresence, m } from "framer-motion";
 // @mui
-import { alpha } from '@mui/material/styles';
-import { List, Stack, Button, IconButton, ListItemText, ListItem } from '@mui/material';
+import { alpha } from "@mui/material/styles";
+import { Button, IconButton, List, ListItem, ListItemText, Stack } from "@mui/material";
 // utils
-import { fData } from '../../utils/formatNumber';
+import { fData } from "../../utils/formatNumber";
 //
-import Image from '../Image';
-import Iconify from '../Iconify';
-import { varFade } from '../animate';
+import Image from "../Image";
+import Iconify from "../Iconify";
+import { varFade } from "../animate";
 
 // ----------------------------------------------------------------------
 

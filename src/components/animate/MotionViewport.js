@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types';
-import { m } from 'framer-motion';
+import PropTypes from "prop-types";
+import { m } from "framer-motion";
 // @mui
-import { Box } from '@mui/material';
+import { Box } from "@mui/material";
 // hooks
-import useResponsive from '../../hooks/useResponsive';
+import useResponsive from "../../hooks/useResponsive";
 //
-import { varContainer } from '.';
+import { varContainer } from ".";
 
 // ----------------------------------------------------------------------
 

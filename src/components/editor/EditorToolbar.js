@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import EditorToolbarStyle from './EditorToolbarStyle';
+import PropTypes from "prop-types";
+import EditorToolbarStyle from "./EditorToolbarStyle";
 
 // ----------------------------------------------------------------------
 

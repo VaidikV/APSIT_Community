@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles';
 import Layout from '../layouts';
 // components
 import Page from '../components/Page';
-import {HomeHero} from "../sections/home";
+import { HomeHero } from '../sections/home';
 
 // ----------------------------------------------------------------------
 

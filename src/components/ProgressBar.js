@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
-import NProgress from 'nprogress';
+import { useEffect } from "react";
+import NProgress from "nprogress";
 // next
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 // @mui
-import { useTheme } from '@mui/material/styles';
-import GlobalStyles from '@mui/material/GlobalStyles';
+import { useTheme } from "@mui/material/styles";
+import GlobalStyles from "@mui/material/GlobalStyles";
 
 // ----------------------------------------------------------------------
 

@@ -1,9 +1,9 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { sentenceCase } from 'change-case';
 // next
 import { useRouter } from 'next/router';
 // @mui
-import { Box, Card, Divider, Container, Typography } from '@mui/material';
+import { Box, Card, Container, Divider, Typography } from '@mui/material';
 // routes
 import { PATH_DASHBOARD } from '../../../../routes/paths';
 // hooks
@@ -20,10 +20,10 @@ import HeaderBreadcrumbs from '../../../../components/HeaderBreadcrumbs';
 import { SkeletonPost } from '../../../../components/skeleton';
 // sections
 import {
-  BlogPostHero,
-  BlogPostTags,
   BlogPostCommentForm,
   BlogPostCommentList,
+  BlogPostHero,
+  BlogPostTags,
 } from '../../../../sections/@dashboard/blog';
 
 // ----------------------------------------------------------------------
