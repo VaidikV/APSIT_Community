@@ -39,19 +39,19 @@ const ContentStyle = styled((props) => <Stack spacing={5} {...props} />)(({ them
   },
 }));
 
-// const HeroOverlayStyle = styled(m.img)({
-//   zIndex: 9,
-//   width: '100%',
-//   height: '100%',
-//   objectFit: 'cover',
-//   position: 'absolute',
-// });
+const HeroOverlayStyle = styled(m.img)({
+  zIndex: 9,
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+  position: 'absolute',
+});
 
 const HeroImgStyle = styled(m.img)(({ theme }) => ({
   top: 0,
   right: 0,
   bottom: 0,
-  zIndex: 8,
+  zIndex: 9,
   width: '100%',
   margin: 'auto',
   position: 'absolute',
@@ -68,7 +68,7 @@ export default function HomeHero() {
   return (
     <MotionContainer>
       <RootStyle>
-        {/*<HeroOverlayStyle alt="overlay" src="https://minimals.cc/assets/overlay.svg" variants={varFade().in} />*/}
+        <HeroOverlayStyle alt="overlay" src="/hero.svg" variants={varFade().in} />
 
         <HeroImgStyle alt="hero" src="/community-3d.png" variants={varFade().inUp} />
 
