@@ -12,6 +12,6 @@ module.exports = withTM({
   swcMinify: false,
   trailingSlash: true,
   env: {
-    HOST_API_KEY: 'https://apsit-community-backend-v2.herokuapp.com',
+    HOST_API_KEY: 'https://itsabhishek.pythonanywhere.com/',
   },
 });
