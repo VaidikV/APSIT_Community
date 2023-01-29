@@ -94,7 +94,6 @@ const slice = createSlice({
     startLoading(state) {
       state.isLoading = true;
     },
-
     // HAS ERROR
     hasError(state, action) {
       state.isLoading = false;
