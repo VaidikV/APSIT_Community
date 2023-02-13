@@ -12,6 +12,6 @@ module.exports = withTM({
   swcMinify: false,
   trailingSlash: true,
   env: {
-    HOST_API_KEY: 'https://apsit-community-2mbb.onrender.com/',
+    HOST_API_KEY: 'https://apsit-community.onrender.com/',
   },
 });
