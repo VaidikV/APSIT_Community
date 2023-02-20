@@ -1,7 +1,6 @@
 // routes
 import { PATH_DASHBOARD, PATH_PAGE } from '../../../routes/paths';
 // components
-import Label from '../../../components/Label';
 import SvgIconStyle from '../../../components/SvgIconStyle';
 
 // ----------------------------------------------------------------------
@@ -11,6 +10,7 @@ const getIcon = (name) => <SvgIconStyle src={`/icons/${name}.svg`} sx={{ width: 
 const ICONS = {
   blog: getIcon('ic_blog'),
   achievement: getIcon('ic_achievement'),
+  internship: getIcon('ic_internship'),
   cart: getIcon('ic_cart'),
   chat: getIcon('ic_chat'),
   mail: getIcon('ic_mail'),
@@ -37,6 +37,11 @@ const navConfig = [
         title: 'Home',
         path: PATH_DASHBOARD.general.app,
         icon: ICONS.home,
+      },
+      {
+        title: 'Internships',
+        path: PATH_DASHBOARD.general.news,
+        icon: ICONS.internship,
       },
       {
         title: 'News',
