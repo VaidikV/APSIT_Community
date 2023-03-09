@@ -1,5 +1,5 @@
 // @mui
-import { Container, Grid } from '@mui/material';
+import { Container, Fab, Grid, Typography } from '@mui/material';
 // hooks
 import useAuth from '../../hooks/useAuth';
 import useSettings from '../../hooks/useSettings';
@@ -10,6 +10,7 @@ import Page from '../../components/Page';
 // sections
 import { AppWelcome } from '../../sections/@dashboard/general/app';
 import BlogPosts from './blog/posts';
+import SvgIconStyle from '../../components/SvgIconStyle';
 
 // ----------------------------------------------------------------------
 
@@ -35,6 +36,15 @@ export default function GeneralApp() {
           </Grid>
         </Grid>
       </Container>
+      <Fab
+        sx={{ position: 'fixed', justifyContent: 'space-around', bottom: 24, right: 24, zIndex: 10 }}
+        variant="extended"
+        color="primary"
+        aria-label="Chatbot"
+      >
+        <SvgIconStyle src={`/icons/ic_bot.svg`} />
+        <Typography>May I help you?</Typography>
+      </Fab>
     </Page>
   );
 }

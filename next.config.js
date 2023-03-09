@@ -8,10 +8,18 @@ const withTM = require('next-transpile-modules')([
   '@fullcalendar/timeline',
 ]);
 
-module.exports = withTM({
+const nextConfig = {
   swcMinify: false,
   trailingSlash: true,
   env: {
     HOST_API_KEY: 'https://apsit-community.onrender.com/',
   },
-});
+};
+
+const pwaConfig = {
+  dest: 'public',
+  register: true,
+  skipWaiting: true,
+};
+const withPWA = require('next-pwa')(pwaConfig);
+module.exports = withTM(withPWA(nextConfig));
