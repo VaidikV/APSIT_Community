@@ -1,18 +1,14 @@
-import { m } from 'framer-motion';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Box, Container, Stack, InputAdornment } from '@mui/material';
+import { Box, Container, Stack } from '@mui/material';
 // components
-import Iconify from '../../components/Iconify';
-import InputStyle from '../../components/InputStyle';
 import { MotionContainer, TextAnimate, varFade } from '../../components/animate';
 
 // ----------------------------------------------------------------------
 
 const RootStyle = styled('div')(({ theme }) => ({
   backgroundSize: 'cover',
-  backgroundImage:
-    'url(https://minimal-assets-api.vercel.app/assets/overlay.svg), url(https://minimal-assets-api.vercel.app/assets/images/faqs/hero.jpg)',
+  backgroundImage: 'url(/overlay_1.svg),url(/hero.jpg)',
   padding: theme.spacing(10, 0),
   [theme.breakpoints.up('md')]: {
     height: 560,
@@ -39,11 +35,8 @@ export default function FaqsHero() {
           <div>
             <TextAnimate text="How" sx={{ color: 'primary.main' }} variants={varFade().inRight} />
             <br />
-            <Box sx={{ display: 'inline-flex', color: 'common.white' }}>
-              <TextAnimate text="can" sx={{ mr: 2 }} />
-              <TextAnimate text="we" sx={{ mr: 2 }} />
-              <TextAnimate text="help" sx={{ mr: 2 }} />
-              <TextAnimate text="you?" />
+            <Box sx={{ color: 'common.white' }}>
+              <TextAnimate text="we can help you?" />
             </Box>
           </div>
         </ContentStyle>

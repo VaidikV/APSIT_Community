@@ -10,7 +10,7 @@ import { MotionContainer, TextAnimate, varFade } from '../../components/animate'
 const RootStyle = styled('div')(({ theme }) => ({
   backgroundSize: 'cover',
   backgroundPosition: 'center',
-  backgroundImage: 'url(https://minimals.cc/assets/overlay.svg)',
+  backgroundImage: 'url(/overlay_1.svg)',
   padding: theme.spacing(10, 0),
   [theme.breakpoints.up('md')]: {
     height: 560,
@@ -37,8 +37,8 @@ export default function AboutHero() {
           <TextAnimate text="Who" sx={{ color: 'primary.main' }} variants={varFade().inRight} />
           <br />
           <Box sx={{ display: 'inline-flex', color: 'common.white' }}>
-            <TextAnimate text="we" sx={{ mr: 2 }} />
-            <TextAnimate text="are?" />
+            <TextAnimate text="are" />
+            <TextAnimate text="we?" />
           </Box>
         </ContentStyle>
       </Container>

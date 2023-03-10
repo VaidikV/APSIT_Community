@@ -1,9 +1,9 @@
-import PropTypes from "prop-types";
-import { m } from "framer-motion";
+import PropTypes from 'prop-types';
+import { m } from 'framer-motion';
 // @mui
-import { Box } from "@mui/material";
+import { Box } from '@mui/material';
 //
-import { varFade } from "./variants";
+import { varFade } from './variants';
 
 // ----------------------------------------------------------------------
 
@@ -25,9 +25,9 @@ export default function TextAnimate({ text, variants, sx, ...other }) {
       }}
       {...other}
     >
-      {text.split('').map((letter, index) => (
+      {text.split(' ').map((letter, index) => (
         <m.span key={index} variants={variants || varFade().inUp}>
-          {letter}
+          {letter}&nbsp;
         </m.span>
       ))}
     </Box>

@@ -53,7 +53,7 @@ const navConfig = [
         path: PATH_DASHBOARD.achievement,
         icon: ICONS.achievement,
       },
-      { title: 'calendar', path: PATH_DASHBOARD.calendar, icon: ICONS.calendar },
+      { title: 'Calendar', path: PATH_DASHBOARD.calendar, icon: ICONS.calendar },
       {
         title: 'About',
         path: PATH_PAGE.about,
