@@ -38,12 +38,12 @@ export default function AppWelcome({ displayName }) {
           color: 'grey.800',
         }}
       >
-        <Typography gutterBottom variant="h4">
-          Welcome back,
-          <br /> {!displayName ? 'Your name' : displayName}!
+        <Typography variant="h4">Welcome back,</Typography>
+        <Typography gutterBottom variant="h1" color="primary">
+          {!displayName ? 'Your name' : displayName}!
         </Typography>
 
-        <Typography variant="body1" sx={{ pb: { xs: 3, xl: 5 }, maxWidth: 480, mx: 'auto' }}>
+        <Typography variant="body1" sx={{ pb: { xs: 3, xl: 5 }, maxWidth: 480 }}>
           Hope you are doing well <br /> Click below to create a new post
         </Typography>
 

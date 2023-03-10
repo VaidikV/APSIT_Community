@@ -1,13 +1,14 @@
 import { m } from 'framer-motion';
 import NextLink from 'next/link';
 // @mui
-import { styled } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles';
 import { Button, Box, Container, Typography, Stack } from '@mui/material';
 // routes
 import { PATH_AUTH } from '../../routes/paths';
 // components
 import Iconify from '../../components/Iconify';
 import { MotionContainer, varFade } from '../../components/animate';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 // ----------------------------------------------------------------------
 
@@ -51,24 +52,27 @@ const HeroImgStyle = styled(m.img)(({ theme }) => ({
   top: 0,
   right: 0,
   bottom: 0,
-  zIndex: 9,
+  zIndex: 8,
   width: '100%',
   margin: 'auto',
   position: 'absolute',
-  [theme.breakpoints.up('lg')]: {
+  [theme.breakpoints.up('md')]: {
     right: '8%',
     width: 'auto',
-    height: '80vh',
+  },
+  [theme.breakpoints.down('md')]: {
+    display: 'none',
   },
 }));
 
 // ----------------------------------------------------------------------
 
 export default function HomeHero() {
+  const largeScreen = useMediaQuery((theme) => theme.breakpoints.up('sm'));
   return (
     <MotionContainer>
       <RootStyle>
-        <HeroOverlayStyle alt="overlay" src="/hero.svg" variants={varFade().in} />
+        <HeroOverlayStyle alt="overlay" src="/overlay_1.svg" variants={varFade().in} />
 
         <HeroImgStyle alt="hero" src="/community-3d.png" variants={varFade().inUp} />
 
@@ -88,7 +92,7 @@ export default function HomeHero() {
             </m.div>
 
             <m.div variants={varFade().inRight}>
-              <Stack spacing={2.5} direction={'row'} alignItems={'center'}>
+              <Stack spacing={2.5} direction={largeScreen ? 'row' : 'column'} alignItems={'center'}>
                 <NextLink href={PATH_AUTH.login} passHref>
                   <Button
                     size="large"

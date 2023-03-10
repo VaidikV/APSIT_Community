@@ -80,10 +80,6 @@ function CarouselItem({ item, isActive }) {
           width: '100%',
           height: '100%',
           position: 'absolute',
-          backgroundImage: `linear-gradient(to top, ${theme.palette.grey[900]} 0%,${alpha(
-            theme.palette.grey[900],
-            0
-          )} 100%)`,
         }}
       />
       <CardContent
@@ -91,11 +87,8 @@ function CarouselItem({ item, isActive }) {
         animate={isActive}
         action
         sx={{
-          bottom: 0,
           width: '100%',
-          maxWidth: 480,
           textAlign: 'left',
-          position: 'absolute',
           color: 'common.white',
         }}
       >
@@ -104,13 +97,11 @@ function CarouselItem({ item, isActive }) {
             {item.title}
           </Typography>
         </m.div>
-        {isLarge && (
-          <m.div variants={varFade().inRight}>
-            <Typography variant="body2" gutterBottom>
-              {item.description}
-            </Typography>
-          </m.div>
-        )}
+        <m.div variants={varFade().inRight}>
+          <Typography variant="body2" gutterBottom>
+            {item.description}
+          </Typography>
+        </m.div>
       </CardContent>
     </Paper>
   );

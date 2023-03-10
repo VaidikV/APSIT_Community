@@ -27,7 +27,7 @@ Faqs.getLayout = function getLayout(page) {
 
 export default function Faqs() {
   return (
-    <Page title="Faqs">
+    <Page title="Help">
       <RootStyle>
         <FaqsHero />
 
@@ -43,9 +43,6 @@ export default function Faqs() {
           </Typography>
 
           <Grid container spacing={10}>
-            {/*<Grid item xs={12} md={6}>*/}
-            {/*  <FaqsList />*/}
-            {/*</Grid>*/}
             <Grid item xs={12} md={6}>
               <FaqsForm />
             </Grid>

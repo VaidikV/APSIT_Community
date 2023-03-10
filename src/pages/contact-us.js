@@ -30,7 +30,6 @@ export default function Contact() {
     <Page title="Contact us">
       <RootStyle>
         <ContactHero />
-
         <Container sx={{ my: 10 }}>
           <Grid container spacing={10}>
             <Grid item xs={12} md={6}>
