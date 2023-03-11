@@ -21,7 +21,7 @@ import { IconButtonAnimate } from '../../../components/animate';
 const MENU_OPTIONS = [
   {
     label: 'Home',
-    linkTo: PATH_DASHBOARD.general.app,
+    linkTo: PATH_DASHBOARD.home,
   },
   {
     label: 'Profile',

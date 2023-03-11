@@ -103,7 +103,7 @@ export default function BlogNewPostForm({ isEdit, post }) {
       reset();
       handleClosePreview();
       enqueueSnackbar(isEdit ? 'Post updated successfully' : 'Created new post successfully!');
-      push(PATH_DASHBOARD.general.app);
+      push(PATH_DASHBOARD.home);
     } catch (error) {
       enqueueSnackbar(error.message, { variant: 'error' });
     }
