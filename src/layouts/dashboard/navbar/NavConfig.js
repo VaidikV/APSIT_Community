@@ -35,17 +35,17 @@ const navConfig = [
     items: [
       {
         title: 'Home',
-        path: PATH_DASHBOARD.general.app,
+        path: PATH_DASHBOARD.home,
         icon: ICONS.home,
       },
       {
         title: 'Internships',
-        path: PATH_DASHBOARD.general.news,
+        path: PATH_DASHBOARD.internship,
         icon: ICONS.internship,
       },
       {
         title: 'News',
-        path: PATH_DASHBOARD.general.news,
+        path: PATH_DASHBOARD.news.root,
         icon: ICONS.news,
       },
       {

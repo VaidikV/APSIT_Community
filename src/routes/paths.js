@@ -30,10 +30,8 @@ export const PATH_PAGE = {
 
 export const PATH_DASHBOARD = {
   root: ROOTS_DASHBOARD,
-  general: {
-    app: path(ROOTS_DASHBOARD, '/home'),
-    news: path(ROOTS_DASHBOARD, '/news'),
-  },
+  home: path(ROOTS_DASHBOARD, '/home'),
+  internship: path(ROOTS_DASHBOARD, '/internship'),
   achievement: path(ROOTS_DASHBOARD, '/achievement'),
   calendar: path(ROOTS_DASHBOARD, '/calendar'),
   user: {

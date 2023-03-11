@@ -33,10 +33,10 @@ export default function FaqsHero() {
       <Container component={MotionContainer} sx={{ position: 'relative', height: '100%' }}>
         <ContentStyle spacing={5}>
           <div>
-            <TextAnimate text="How" sx={{ color: 'primary.main' }} variants={varFade().inRight} />
+            <TextAnimate text="Need" sx={{ color: 'primary.main' }} variants={varFade().inRight} />
             <br />
             <Box sx={{ color: 'common.white' }}>
-              <TextAnimate text="we can help you?" />
+              <TextAnimate text="Any Help?" />
             </Box>
           </div>
         </ContentStyle>
