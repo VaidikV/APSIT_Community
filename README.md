@@ -1,6 +1,6 @@
 ## Welcome to APSIT Community!!
 
-[Live Link]("https://apsit-community.vercel.app/")
+[Live Link](https://apsit-community.vercel.app/)
 
 APSIT Community is a social media platform developed to enhance interdepartmental communication among students at the A. P. Shah Institute of Technology (APSIT). The platform enables students to post updates, engage with content, share internship opportunities, and foster collaborative interactions within the institution.
 
@@ -11,7 +11,7 @@ APSIT Community is a social media platform developed to enhance interdepartmenta
 - **Internship Scraper**: Fetches and displays internship opportunities from various sources.
 - **User Engagement**: Students can interact with posts by liking, commenting, and reporting content.
 - **Scalable Backend**: The backend is hosted on AWS Elastic Beanstalk for reliability and scalability.
-
+.
 ## Tech Stack
 
 - **Frontend**: 
@@ -21,6 +21,7 @@ APSIT Community is a social media platform developed to enhance interdepartmenta
 - **Backend**:
   - Flask (Python)
   - RESTful APIs
+  - Backend repository is [here](https://github.com/VaidikV/APSIT-Community-Backend)
 
 - **Hosting**:
   - AWS Elastic Beanstalk (Backend)
